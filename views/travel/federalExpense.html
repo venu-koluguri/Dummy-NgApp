@@ -1,0 +1,508 @@
+﻿<style type="text/css">
+    input.ng-valid, select.ng-valid {
+        border-left: 2px solid #57A83F;
+    }
+</style>
+
+<div class="row">
+    <div class="jarviswidget" id="Travel_Expense_Wid" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header>
+            <span class="widget-icon"><i class="fa fa-edit"></i></span>
+            <h2>Expense Report Form </h2>
+
+        </header>
+        <!-- widget div-->
+        <div>
+            <!-- widget edit box -->
+            <div class="jarviswidget-editbox">
+                <!-- This area used as dropdown edit box -->
+            </div>
+            <!-- end widget edit box -->
+            <!-- widget content -->
+            <div class="widget-body">
+                <p class="label label-danger" ng-show="allVouchers.length==0">No approved Travel Authorization are found. </p>
+                <form name="myForm" id="myForm" novalidate>
+                    
+                    <div class="row smart-form">
+                        <section class="col col-6">
+                            <label class="label">Document Number</label>
+                            <label class="select" ng-class="{ 'state-error' : myForm.drpDocumentNumber.$invalid && !myForm.drpDocumentNumber.$pristine, 'state-success': myForm.drpDocumentNumber.$valid && !myForm.drpDocumentNumber.$pristine}">
+                                <select name="drpDocumentNumber" ng-model="travelExpenseFrom" id="drpDocumentNumber" required ng-options="tf.FederalTravelRequest.BookingNumber for tf in allVouchers"></select>
+                                <i></i>
+                            </label>
+                        </section>
+                        <section class="col col-6">
+                            <label class="label">Name</label>
+                            <label id="lblTravellerName" class="txt-color-blueDark">
+                                {{travelExpenseFrom.FederalTravelRequest.FederalTravelerName || travelExpenseFrom.FederalTravelRequest.NonFederalTravelerName}}
+                            </label>
+                        </section>
+                    </div>
+                    <div class="row smart-form">
+                        <section class="col col-4">
+                            <label class="label">Start Date:</label>
+                            <label id="lblStartDate" class="txt-color-blueDark">
+                                {{travelExpenseFrom.FederalTravelRequest.TravelStartDate}}
+                            </label>
+                        </section>
+                        <section class="col col-4">
+                            <label class="label">End Date:</label>
+                            <label id="lblEndDate" class="txt-color-blueDark">
+                                {{travelExpenseFrom.FederalTravelRequest.TravelEndDate}}
+                            </label>
+                        </section>
+                        <section class="col col-4">
+                            <label class="label">Destination</label>
+                            <label id="lblDestination" class="txt-color-blueDark">
+                                {{travelExpenseFrom.FederalTravelRequest.County +' ,'+travelExpenseFrom.FederalTravelRequest.City +' ,'+ travelExpenseFrom.FederalTravelRequest.State}}
+                            </label>
+                        </section>
+                    </div>
+                    <div class="alert alert-info fade in">
+
+                        <i class="fa-fw fa fa-info"></i>
+                        Please enter (below) the total amount spent for authorized travel expenditures related to this specific Travel Authorization. All entries should be total dollars/cents for each category except for Private Vehicle (POV) use which should be entered as total.<br />
+                        When you have completed this Travel Voucher Summary Form, please print, sign, and provide, along with all original receipts, to Travel Administrators.
+                    </div>
+                    <section class="txt-color-red text-align-center">If you have any questions, please contact an Travel Administrator.</section>
+                    <hr />
+                    <div class="form-horizontal">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-4">
+                                <div class="buying">
+                                    <table border="0" class="moreBuyingChoices">
+                                        <tbody>
+                                            <tr>
+                                                <td class="topLeft">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div style="text-align: center; font-weight: bold; padding-bottom: 5px;">
+                                                                        TRANSPORTATION RELATED EXPENSES
+                                                                    </div>
+                                                                    <div id="more-buying-choice-content-div">
+                                                                        <div style="padding-left: 20px;" id="secondaryUsedAndNew">
+                                                                            <table class="table">
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Airport Shuttle
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtAirportShuttle" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.AirportShuttle">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Boat/Ferry Fares
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtBoatFerryFares" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.BoatFerryFares">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Bus Fares
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtBusFares" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.BusFares">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Highway/Bridge Tolls
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtHighwaytolls" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.HighwayBridgeTolls">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Other Public Transit
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtOtherPublicTransit" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.OtherPublicTransit">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Parking Fees
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+
+                                                                                        <input id="txtParkingFees" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.ParkingFees">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td colspan="2">
+                                                                                        <div style="border-color: Red; border: 2px;">
+                                                                                            <table style="width: 100%">
+                                                                                                <tr>
+                                                                                                    <td class="control-label" style="color: red">
+                                                                                                        Private Vehicle (POV)<br />
+                                                                                                        (in Miles)
+                                                                                                    </td>
+                                                                                                    <td class="ms-formlabel">
+                                                                                                        <input id="txtPrivateVehicle" style="width: 60px;" class=" miles" ng-pattern="/^[0-9]{1,7}$/" type="text" ng-model="travelExpenseFrom.PrivateVehicleMiles">
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Rental Car
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtRentalCar" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.RentalCar">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Subway/Metro
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtSubwayMetro" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.SubwayMetro">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Taxi
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtTaxi" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.Taxi">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Train
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtTrain" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.Train">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Water-taxis/Ships (excursions)
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtWaterTaxisShips" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.WaterTaxiShip">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Gas(rental car)
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtGas" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.Gas">
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td width="13" class="topRight"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bottomLeft"></td>
+                                                <td height="12" class="bottomRight"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-4">
+                                <div class="buying">
+                                    <table border="0" class="moreBuyingChoices">
+                                        <tbody>
+                                            <tr>
+                                                <td class="topLeft">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div style="text-align: center; font-weight: bold; padding-bottom: 5px;">
+                                                                        LODGING RELATED EXPENSES
+                                                                    </div>
+                                                                    <div id="Div3">
+                                                                        <div style="padding-left: 20px;" id="Div4">
+                                                                            <table class="table">
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Hotel tax
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtHoteltax" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.HotelTax">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Lodging/Room Charge
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtLodgingRoomCharge" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.LodgingRoomCharge">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Laundry/Dry Cleaning
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtLaundryDryCleaning" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.LaundryDryCleaning">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Internet Use
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtInternetUse" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.InternetUse">
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td width="13" class="topRight"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bottomLeft"></td>
+                                                <td height="12" class="bottomRight"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-4">
+                                <div class="buying">
+                                    <table border="0" class="moreBuyingChoices">
+                                        <tbody>
+                                            <tr>
+                                                <td class="topLeft">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div style="text-align: center; font-weight: bold; padding-bottom: 5px;">
+                                                                        PROFESSIONAL RELATED EXPENSES
+                                                                    </div>
+                                                                    <div id="Div1">
+                                                                        <div style="padding-left: 20px;" id="Div2">
+                                                                            <table class="table">
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        ATM Fees
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtATMFees" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.ATMFees">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Business Calls
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtBusinessCalls" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.BusinessCalls">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Personal Calls (calls home)
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtPersonalCalls" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.PersonalCalls">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Debit Card Fees
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtDebitCardFees" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.DebitCardFees">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Checked Baggage
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtExcessBaggage" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.ExcessBaggage">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Facsimile Charges
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtFacsimileCharges" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.FacsimileCharge">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Government Vehicle
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtGovernmentVehicle" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.GovernmentVehicleMiles">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Pre-paid Registration Fees
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtPreRegistrationFees" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.PreRegistrationFees">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Registration Fees
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtRegistrationFees" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.RegistrationFees">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Travelers Check Fees
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtTravelersCheckFees" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.TravelersCheckFees">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="control-label">
+                                                                                        Miscellaneous/Other
+                                                                                    </td>
+                                                                                    <td class="ms-formlabel">
+                                                                                        <input id="txtMiscellaneous" style="width: 60px;" class=" dol" maxlength="6" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" type="text" ng-model="travelExpenseFrom.MiscellaneousOther">
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td width="13" class="topRight"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bottomLeft"></td>
+                                                <td height="12" class="bottomRight"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-4 text-align-center">
+                            <span class="txt-color-orangeDark">TOTALS</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-4 text-align-center">
+                            <span class="txt-color-orangeDark">Total Miles</span><span class="label label-warning" id="txtTotalMiles" ng-model="travelExpenseFrom.TotalAmount" style="font-size:1.1em;"></span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-4 text-align-center">
+                            <span class="txt-color-orangeDark">Total Amount</span><span class="label label-info" id="txtTotalAmount" ng-model="travelExpenseFrom.TotalAmount" style="font-size:1.1em;"></span>
+                        </div>
+                    </div>
+                    <div class="row smart-form">
+                        <section>
+                            <label>Additional Information</label>
+                            <label class="textarea">
+                                <i class="icon-append fa fa-comment"></i>
+                                <textarea placeholder="Additional Information" id="txtAdditionalInformation" ng-model="travelExpenseFrom.AdditionalInfo" name="txtAdditionalInformation"></textarea>
+                            </label>
+                        </section>
+                        <span class="txt-color-red text-align-center">Please remember you must identify all meals furnished to you by the Government so your M&IE can be adjusted accordingly. An example would be meals included in registration fees the Government has paid. Please identify the actual meal (breakfast, lunch, and/or dinner) and day(s) received.</span>
+                        <br />
+                        <section class="col col-10">
+                            <label class="control-label" for="fileUploader">Please select file(PDF's only)</label>
+                            <p class="label label-danger" ng-show="invalidFileType">You can upload only PDF files, please select valid PDF file.</p>
+                            <input id="fileUploader" name="fileUploader" type="file" class="form-control" ng-model="travelExpensefiles" onchange="angular.element(this).scope().filesChanged(this);" accept="application/pdf">
+                        </section>
+                        <!--<table style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td class="text-align-right">
+                                        SIGN:
+                                    </td>
+                                    <td>
+                                        _______________________
+                                    </td>
+                                    <td></td>
+                                    <td class="text-align-right">
+                                        DATE:
+                                    </td>
+                                    <td>
+                                        _______________________
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <span id="lblFooter" class="txt-color-orangeDark">PLEASE REMEMBER YOU MUST PRINT A COPY OF THIS TRAVEL VOUCHER SUMMARY FORM, SIGN, AND PROVIDE IT, ALONG WITH ALL ORIGINAL RECEIPTS, TO TRAVEL ADMINISTRATORS</span>-->
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+                                <button type="button" class="btn btn-default" ng-class="saveForm();"><i class="fa fa-save">&nbsp;</i>Save</button>
+                                <button type="submit" class="btn btn-primary" ng-click="submitForm(myForm.$valid);"><i class="fa fa-save">&nbsp;</i>Submit</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- end widget content -->
+            {{travelExpenseFrom}}
+        </div>
+        <!-- end widget div -->
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#txtTotalMiles").html('0');
+        $("#txtTotalAmount").html('$0.00');
+        //$('#exitfullscreenmode').click();
+        $('#exitfullscreenmode').click();
+        $(".dol").each(function () {
+            $(this).blur(function () {
+                calculateSum();
+            });
+        });
+        $(".miles").each(function () {
+            $(this).blur(function () {
+                $("#txtTotalMiles").html(this.value);
+            });
+        });
+    });
+
+    function calculateSum() {
+
+        var sum = 0;
+        $(".dol").each(function () {
+
+            if (!isNaN(this.value) && this.value.length != 0) {
+                sum += parseFloat(this.value);
+            }
+        });
+        $("#txtTotalAmount").html('$' + sum);
+    }
+</script>

@@ -1,0 +1,637 @@
+﻿<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <title>OCM Login Page</title>
+
+    <meta name="description" content="User login page">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Basic Styles -->
+    <link rel="stylesheet" type="text/css" media="screen" href="/_layouts/15/Intranet/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/_layouts/15/Intranet/css/font-awesome.min.css">
+
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" href="/_layouts/15/Intranet/img/favicon.ico" type="image/x-icon">
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300">
+
+    <style>
+        #ms-error-body {
+            min-height: 100%;
+            padding-bottom: 0;
+            font-family: 'Open Sans';
+            font-size: 13px;
+            line-height: 1.5;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            margin: 0;
+            background: #2457a3 url(/_layouts/15/Intranet/img/login_bkgd.png) repeat-x;
+        }
+
+        .ms-backgroundImage {
+        }
+
+        .login-layout .main-content {
+            margin-left: 0;
+            min-height: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .login-container {
+            width: 375px;
+            margin: 0 auto;
+        }
+
+        .center, .align-center {
+            text-align: center !important;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: normal;
+            font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+
+        h1, .h1 {
+            font-size: 36px;
+        }
+
+        h1, .h1, h2, .h2, h3, .h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .green {
+            color: #69aa46 !important;
+        }
+
+        .ace-icon {
+            text-align: center;
+        }
+
+        .red {
+            color: #dd5a43 !important;
+        }
+
+        .white {
+            color: #fff !important;
+        }
+
+        .blue {
+            color: #478fca !important;
+        }
+
+        .space-6 {
+            max-height: 1px;
+            min-height: 1px;
+            overflow: hidden;
+            margin: 12px 0;
+            margin: 6px 0 5px;
+        }
+
+        .position-relative, .pos-rel {
+            position: relative;
+        }
+
+        .login-layout .widget-box.visible {
+            visibility: visible;
+            position: relative;
+            z-index: auto;
+            -moz-transform: scale(1,1) translate(0);
+            -webkit-transform: scale(1,1) translate(0);
+            -o-transform: scale(1,1) translate(0);
+            -ms-transform: scale(1,1) translate(0);
+            transform: scale(1,1) translate(0);
+            transition: transform .3s ease;
+            -moz-transition: -moz-transform .3s ease;
+            -webkit-transition: -webkit-transform .3s ease;
+            -o-transition: -o-transform .2s ease;
+        }
+
+        .login-layout .widget-box {
+            visibility: hidden;
+            position: fixed;
+            z-index: -5;
+            border-bottom: none;
+            box-shadow: none;
+            padding: 6px;
+            background-color: #394557;
+            -moz-transform: scale(0,1) translate(-150px);
+            -webkit-transform: scale(0,1) translate(-150px);
+            -o-transform: scale(0,1) translate(-150px);
+            -ms-transform: scale(0,1) translate(-150px);
+            transform: scale(0,1) translate(-150px);
+        }
+
+        .widget-box.no-border {
+            border-width: 0;
+        }
+
+        .widget-box {
+            padding: 0;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            margin: 3px 0;
+            border: 1px solid #CCC;
+        }
+
+        .login-layout .login-box .widget-main {
+            padding-bottom: 16px;
+        }
+
+        .login-layout .widget-box .widget-main {
+            padding: 16px 36px 36px;
+            background: #F7F7F7;
+        }
+
+        .widget-main {
+            padding: 12px;
+        }
+
+        .header.blue {
+            border-bottom-color: #d5e3ef;
+        }
+
+        h4.bigger {
+            font-size: 19px;
+        }
+
+        .header {
+            line-height: 28px;
+            margin-bottom: 16px;
+            margin-top: 18px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #CCC;
+        }
+
+        .blue {
+            color: #478fca !important;
+        }
+
+        .lighter {
+            font-weight: lighter;
+        }
+
+        .header > .ace-icon {
+            margin-right: 2px;
+        }
+
+        .login-layout .widget-box .widget-main form {
+            margin: 0;
+        }
+
+        .widget-main > form {
+            margin-bottom: 0;
+        }
+
+        .login-layout label {
+            margin-bottom: 11px;
+        }
+
+        .block {
+            display: block !important;
+        }
+
+        label {
+            font-weight: normal;
+            font-size: 14px;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-icon.input-icon-right > input {
+            padding-left: 6px;
+            padding-right: 24px;
+        }
+
+        .input-icon.input-icon-right > .ace-icon {
+            left: auto;
+            right: 3px;
+        }
+
+        .input-icon.input-icon-right > .ace-icon {
+            left: auto;
+            right: 3px;
+        }
+
+        .input-icon > .ace-icon {
+            padding: 0 3px;
+            z-index: 2;
+            position: absolute;
+            top: 1px;
+            bottom: 1px;
+            left: 3px;
+            line-height: 28px;
+            display: inline-block;
+            color: #909090;
+            font-size: 16px;
+        }
+
+        .input-icon > .ace-icon {
+            padding: 0 3px;
+            z-index: 2;
+            position: absolute;
+            top: 1px;
+            bottom: 1px;
+            left: 3px;
+            line-height: 28px;
+            display: inline-block;
+            color: #909090;
+            font-size: 16px;
+        }
+
+        .ace-icon {
+            text-align: center;
+        }
+
+        .space-4 {
+            max-height: 1px;
+            min-height: 1px;
+            overflow: hidden;
+            margin: 12px 0;
+            margin: 4px 0 3px;
+        }
+
+        span.input-icon {
+            display: inline-block;
+        }
+
+        .input-icon {
+            position: relative;
+        }
+
+            .input-icon.input-icon-right > input {
+                padding-left: 6px;
+                padding-right: 24px;
+            }
+
+            .input-icon > input {
+                padding-left: 24px;
+                padding-right: 6px;
+            }
+
+            .input-icon.input-icon-right > .ace-icon {
+                left: auto;
+                right: 3px;
+            }
+
+            .input-icon > .ace-icon {
+                padding: 0 3px;
+                z-index: 2;
+                position: absolute;
+                top: 1px;
+                bottom: 1px;
+                left: 3px;
+                line-height: 28px;
+                display: inline-block;
+                color: #909090;
+                font-size: 16px;
+            }
+
+        .space {
+            max-height: 1px;
+            min-height: 1px;
+            overflow: hidden;
+            margin: 12px 0;
+        }
+
+
+        .login-box .toolbar {
+            background: #5090C1;
+            border-top: 2px solid #597597;
+        }
+
+            .login-box .toolbar > div:first-child {
+                float: left;
+                text-align: left;
+            }
+
+            .login-box .toolbar > div {
+                width: 50%;
+                display: inline-block;
+                padding: 9px 0 11px;
+            }
+
+        .login-layout .widget-box .widget-body .toolbar > div > a {
+            font-size: 15px;
+            font-weight: 400;
+            text-shadow: 1px 0 1px rgba(0,0,0,0.25);
+        }
+
+        .login-box .toolbar > div:first-child > a {
+            margin-left: 11px;
+        }
+
+        .login-box .forgot-password-link {
+            color: #FE9;
+        }
+
+        .login-box .toolbar > div:first-child + div {
+            float: right;
+            text-align: right;
+        }
+
+        .login-box .toolbar > div {
+            width: 50%;
+            display: inline-block;
+            padding: 9px 0 11px;
+        }
+
+        .login-layout .widget-box .widget-body .toolbar > div > a {
+            font-size: 15px;
+            font-weight: 400;
+            text-shadow: 1px 0 1px rgba(0,0,0,0.25);
+        }
+
+        .login-box .toolbar > div:first-child + div > a {
+            margin-right: 11px;
+        }
+
+        .login-box .user-signup-link {
+            color: #CF7;
+        }
+
+        textarea:hover, input[type="text"]:hover, input[type="password"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="date"]:hover, input[type="month"]:hover, input[type="time"]:hover, input[type="week"]:hover, input[type="number"]:hover, input[type="email"]:hover, input[type="url"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="color"]:hover {
+            border-color: #b5b5b5;
+        }
+
+        .input-icon > input {
+            padding-left: 24px;
+            padding-right: 6px;
+        }
+
+        textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+            border-radius: 0 !important;
+            color: #858585;
+            background-color: #fff;
+            border: 1px solid #d5d5d5;
+            padding: 5px 4px 6px;
+            font-size: 14px;
+            font-family: inherit;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            -webkit-transition-duration: .1s;
+            transition-duration: .1s;
+        }
+
+        .form-control, select {
+            border-radius: 0;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            color: #858585;
+            background-color: #fff;
+            border: 1px solid #d5d5d5;
+        }
+
+        .forgot-box .toolbar {
+            background: #C16050;
+            border-top: 2px solid #976559;
+            padding: 9px 18px;
+        }
+
+        .signup-box .toolbar {
+            background: #76B774;
+            border-top: 2px solid #759759;
+            padding: 9px 18px;
+        }
+
+        #noaa_logo {
+            margin: 0 auto;
+            width: 145px;
+            height: 143px;
+        }
+
+        forgot-box .back-to-login-link, .signup-box .back-to-login-link {
+            color: #FE9;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 1px 0 1px rgba(0,0,0,0.25);
+        }
+
+        .forgot-box .back-to-login-link, .signup-box .back-to-login-link {
+            color: #FE9;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 1px 0 1px rgba(0,0,0,0.25);
+        }
+
+        .btn-primary:hover, .btn-primary:active, .open .btn-primary.dropdown-toggle {
+            background-color: #1b6aaa !important;
+            border-color: #428bca;
+        }
+
+        .btn-sm > .ace-icon {
+            margin-right: 3px;
+        }
+
+        .bigger-110 {
+            font-size: 110% !important;
+        }
+    </style>
+</head>
+
+<body class="login-layout blur-login">
+    <div class="container">
+        <br />
+        <div id="noaa_logo">
+            <img src="/_layouts/15/Intranet/img/noaa_logo.png">
+        </div>
+
+        <div class="main-content">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="login-container">
+                        <div class="center">
+                            <h1>
+
+                                <span class="red">OCM</span>
+                                <span class="white" id="id-text2">Intranet</span>
+                            </h1>
+
+                        </div>
+
+                        <div class="space-6"></div>
+
+                        <div class="position-relative">
+                            <div id="login-box" class="login-box widget-box no-border visible">
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <strong class="header blue lighter bigger">
+                                            Please use your NOAA email and password
+                                        </strong>
+
+                                        <div class="space-6"></div>
+
+                                        <form>
+                                            <fieldset>
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                        <input type="text" class="form-control" placeholder="Username">
+                                                        <i class="ace-icon fa fa-user"></i>
+                                                    </span>
+                                                </label>
+
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                        <input type="password" class="form-control" placeholder="Password">
+                                                        <i class="ace-icon fa fa-lock"></i>
+                                                    </span>
+                                                </label>
+
+                                                <div class="space"></div>
+
+                                                <div class="clearfix">
+                                                    <label class="inline">
+                                                        <input type="checkbox" class="ace">
+                                                        <span class="lbl"> Remember Me</span>
+                                                    </label>
+
+                                                    <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+                                                        <i class="ace-icon fa fa-key"></i>
+                                                        <span class="bigger-110">Login</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="space-4"></div>
+                                            </fieldset>
+                                        </form>
+
+
+
+                                        <div class="space-6"></div>
+
+
+                                    </div><!-- /.widget-main -->
+
+                                    <div class="toolbar clearfix">
+                                        <div>
+                                            <a href="#" data-target="#forgot-box" class="forgot-password-link">
+                                                <i class="ace-icon fa fa-arrow-left"></i>
+                                                Forgot password?
+                                            </a>
+                                        </div>
+
+                                        <div>
+                                            <a href="#" data-target="#signup-box" class="user-signup-link">
+                                                Need Access?
+                                                <i class="ace-icon fa fa-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div><!-- /.widget-body -->
+                            </div><!-- /.login-box -->
+
+                            <div id="forgot-box" class="forgot-box widget-box no-border">
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <h4 class="header red lighter bigger">
+                                            <i class="ace-icon fa fa-key"></i>
+                                            Retrieve Password
+                                        </h4>
+
+                                        <div class="space-6"></div>
+                                        <p>
+                                            Please visit <a href="https://ui.nems.noaa.gov/">https://ui.nems.noaa.gov/</a> to reset password.
+                                        </p>
+                                    </div><!-- /.widget-main -->
+
+                                    <div class="toolbar center">
+                                        <a href="#" data-target="#login-box" class="back-to-login-link">
+                                            Back to login
+                                            <i class="ace-icon fa fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div><!-- /.widget-body -->
+                            </div><!-- /.forgot-box -->
+
+                            <div id="signup-box" class="signup-box widget-box no-border">
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <h4 class="header green lighter bigger">
+                                            <i class="ace-icon fa fa-users blue"></i>
+                                            Need Access?
+                                        </h4>
+
+                                        <div class="space-6"></div>
+                                        <p>
+                                            Please send an email to <a href="mailto:auto-trackit@csc.noaa.gov?subject=OCM Intranet: need access">TrackIt</a>.
+                                            <br /><br />In the body of the email please include: <ul> <li>your name</li> <li>email address</li> <li>organization name</li></ul>.
+                                            <br /><br />You will receive a return email with your new login within 24 hours.
+                                        </p>
+                                    </div>
+
+                                    <div class="toolbar center">
+                                        <a href="#" data-target="#login-box" class="back-to-login-link">
+                                            <i class="ace-icon fa fa-arrow-left"></i>
+                                            Back to login
+                                        </a>
+                                    </div>
+                                </div><!-- /.widget-body -->
+                            </div><!-- /.signup-box -->
+                        </div><!-- /.position-relative -->
+
+
+                    </div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.main-content -->
+    </div><!-- /.main-container -->
+    <!-- basic scripts -->
+
+    <script src="/_layouts/15/Intranet/js/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='/_layouts/15/Intranet/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $(document).on('click', '.toolbar a[data-target]', function (e) {
+                e.preventDefault();
+                var target = $(this).data('target');
+                $('.widget-box.visible').removeClass('visible');//hide others
+                $(target).addClass('visible');//show target
+            });
+        });
+
+
+
+        //you don't need this, just used for changing background
+        jQuery(function ($) {
+            $('#btn-login-dark').on('click', function (e) {
+                $('body').attr('class', 'login-layout');
+                $('#id-text2').attr('class', 'white');
+                $('#id-company-text').attr('class', 'blue');
+
+                e.preventDefault();
+            });
+            $('#btn-login-light').on('click', function (e) {
+                $('body').attr('class', 'login-layout light-login');
+                $('#id-text2').attr('class', 'grey');
+                $('#id-company-text').attr('class', 'blue');
+
+                e.preventDefault();
+            });
+            $('#btn-login-blur').on('click', function (e) {
+                $('body').attr('class', 'login-layout blur-login');
+                $('#id-text2').attr('class', 'white');
+                $('#id-company-text').attr('class', 'light-blue');
+
+                e.preventDefault();
+            });
+
+        });
+    </script>
+
+
+</body>
+</html>

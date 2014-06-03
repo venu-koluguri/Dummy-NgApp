@@ -1,0 +1,95 @@
+﻿
+
+<h3>Employee Change of Name Notification </h3>
+<form name="myForm" id="myForm" novalidate role="form" ng-submit="submitForm(myForm.$valid)">
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group"
+                 ng-class="{ 'state-error' : myForm.currentName.$invalid && !myForm.currentName.$pristine, 'state-success': myForm.currentName.$valid && !myForm.currentName.$pristine}">
+                <label for="currentName">Your Current First Name </label>
+                <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
+                <input type="text" name="currentFirstName" readonly ng-model="currentUser.FirstName" class="form-control" required />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group"
+                 ng-class="{ 'state-error' : myForm.currentLastName.$invalid && !myForm.currentLastName.$pristine, 'state-success': myForm.currentLastName.$valid && !myForm.currentLastName.$pristine}">
+                <label for="currentName">Your Current Last Name </label>
+                <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
+                <input type="text" name="currentLastName" readonly ng-model="currentUser.LastName" class="form-control" required />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group"
+                 ng-class="{ 'state-error' : myForm.currentEmail.$invalid && !myForm.currentEmail.$pristine, 'state-success': myForm.currentEmail.$valid && !myForm.currentEmail.$pristine}">
+                <label for="currentEmail">Your Current E-mail address </label>
+                <span class="label label-danger" ng-show="submitted && myForm.currentEmail.$error.required">Required!</span>
+                <span class="label label-danger" ng-show="submitted && myForm.$error.currentEmail">Invalid email!</span>
+                <input type="text" name="currentEmail" readonly ng-model="currentUser.Email" class="form-control" required />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group"
+                 ng-class="{ 'state-error' : myForm.phoneNumber.$invalid && !myForm.phoneNumber.$pristine, 'state-success': myForm.phoneNumber.$valid && !myForm.phoneNumber.$pristine}">
+                <label for="phoneNumber">Your Contact Number </label>
+                <span class="label label-danger" ng-show="submitted && myForm.currentEmail.$error.required">Required!</span>
+                <input type="tel" name="phoneNumber" readonly ng-model="currentUser.PrimaryPhoneNumber" class="form-control" required />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group"
+                 ng-class="{ 'state-error' : myForm.programManager.$invalid && !myForm.programManager.$pristine, 'state-success': myForm.programManager.$valid && !myForm.programManager.$pristine}">
+                <label for="programManager">Your Program Manager </label>
+                <span class="label label-danger" ng-show="submitted && myForm.programManager.$error.required">Required!</span>
+                <input type="text" name="programManager" readonly ng-model="currentUser.ManagerName" class="form-control" required />
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group"
+                 ng-class="{ 'state-error' : myForm.firstName.$invalid && !myForm.firstName.$pristine, 'state-success': myForm.firstName.$valid && !myForm.firstName.$pristine}">
+                <label for="firstName">Requested new First Name </label>
+                <span class="label label-danger" ng-show="submitted && myForm.firstName.$error.required">Required!</span>
+                <input type="text" name="firstName" ng-model="empNameChangeDetails.ReqFirstName" class="form-control" required />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group"
+                 ng-class="{ 'state-error' : myForm.lastName.$invalid && !myForm.lastName.$pristine, 'state-success': myForm.lastName.$valid && !myForm.lastName.$pristine}">
+                <label for="lastName">Requested new Last Name </label>
+                <span class="label label-danger" ng-show="submitted && myForm.lastName.$error.required">Required!</span>
+                <input type="text" name="lastName" ng-model="empNameChangeDetails.ReqLastName" class="form-control" required />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group"
+                 ng-class="{ 'state-error' : myForm.newEmail.$invalid && !myForm.newEmail.$pristine, 'state-success': myForm.newEmail.$valid && !myForm.newEmail.$pristine}">
+                <label for="newEmail">Requested new  E-mail address</label>
+                <span class="label label-danger" ng-show="submitted && myForm.newEmail.$error.required">Required!</span>
+                <span class="label label-danger" ng-show="submitted && myForm.$error.newEmail">Invalid email!</span>
+                <input type="email" name="newEmail" ng-model="empNameChangeDetails.ReqEmail" class="form-control" required />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="additionalComments">Additional comments</label>
+                <textarea name="additionalComments" ng-model="empNameChangeDetails.AdditionalComments" class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="pull-right">
+        <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+    </div>
+</form>

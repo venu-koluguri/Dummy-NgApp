@@ -1,0 +1,210 @@
+﻿<div class="row">
+
+
+
+    <div class="jarviswidget" id="Emp_Sep_Wid" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header>
+            <span class="widget-icon"><i class="fa fa-edit"></i></span>
+            <h2>Request Employee Separation </h2>
+        </header>
+
+        <!-- widget div-->
+        <div>
+
+            <!-- widget edit box -->
+            <div class="jarviswidget-editbox">
+                <!-- This area used as dropdown edit box -->
+
+            </div>
+            <!-- end widget edit box -->
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+
+                <form action="" name="myForm" id="myForm" class="smart-form" novalidate="novalidate" ng-submit="submitEmployeeSeperation(myForm.$valid)">
+                    <header>
+                        Requester Information
+                    </header>
+                    <fieldset>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="control-label" for="drp_Requestor">Requester  Name </label>
+                                <label class="select" ng-class="{ 'state-error' : myForm.drp_CenterSponsor.$invalid && !myForm.drp_CenterSponsor.$pristine, 'state-success': myForm.drp_CenterSponsor.$valid && !myForm.drp_CenterSponsor.$pristine}">
+                                    <select name="drp_Requestor" ng-model="employeeSeperation.RequestorInfo" id="drp_Requestor" ng-options="u.Name for u in allUsers | managers" required>
+                                        <option value="0" selected="" disabled="">Requester  Name</option>
+                                    </select>
+                                    <i></i>
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.drp_CenterSponsor.$error.required">Required!</span>
+                            </section>
+                            <section class="col col-4">
+                                <label class="control-label" for="txtRequestorEmail">Requester email</label>
+                                <label class="input" ng-class="{ 'state-error' : myForm.txtRequestorEmail.$invalid && !myForm.txtRequestorEmail.$pristine, 'state-success': myForm.txtRequestorEmail.$valid && !myForm.txtRequestorEmail.$pristine}">
+                                    <i class="icon-append fa fa-envelope"></i>
+                                    <input type="text" id="txtRequestorEmail" name="txtRequestorEmail" required ng-model="employeeSeperation.RequestorInfo.Email" />
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.txtRequestorEmail.$error.required">Required!</span>
+                            </section>
+
+                            <section class="col col-4">
+                                <label class="control-label" for="DT_DateOfRequest">Date of request</label>
+                                <label class="input" ng-class="{ 'state-error' : myForm.DT_DateOfRequest.$invalid && !myForm.DT_DateOfRequest.$pristine, 'state-success': myForm.DT_DateOfRequest.$valid && !myForm.DT_DateOfRequest.$pristine}">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text" name="DT_DateOfRequest" id="DT_DateOfRequest" placeholder="Date of request" required ng-model="employeeSeperation.dateOfRequest">
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.DT_DateOfRequest.$error.required">Required!</span>
+                            </section>
+                        </div>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label for="DT_DateOfSeperation" class="control-label">Employee Date of Separation</label>
+                                <label class="input" ng-class="{ 'state-error' : myForm.DT_DateOfSeperation.$invalid && !myForm.DT_DateOfSeperation.$pristine, 'state-success': myForm.DT_DateOfSeperation.$valid && !myForm.DT_DateOfSeperation.$pristine}">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text" name="DT_DateOfSeperation" id="DT_DateOfSeperation" placeholder="Date of Separation" required ng-model="employeeSeperation.dateOfSeperation">
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.DT_DateOfSeperation.$error.required">Required!</span>
+                            </section>
+                        </div>
+                    </fieldset>
+
+                    <header>
+                        Employee Information
+                    </header>
+                    <fieldset>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label for="drp_Candidate" class="control-label">Select Employee:</label>
+                                <label class="select" ng-class="{ 'state-error' : myForm.drp_Candidate.$invalid && !myForm.drp_Candidate.$pristine, 'state-success': myForm.drp_Candidate.$valid && !myForm.drp_Candidate.$pristine}">
+                                    <select name="drp_Candidate" ng-model="employeeSeperation.Candidate" id="drp_Candidate" ng-options="u.Name for u in allUsers" required>
+                                        <option value="0" selected="" disabled="">Employee  Name</option>
+                                    </select><i></i>
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.drp_Candidate.$error.required">Required!</span>
+                            </section>
+
+                            <section class="col col-4">
+                                <label for="txtCanJobTitle" class="control-label">Job Title</label>
+                                <label class="input" ng-class="{ 'state-error' : myForm.txtCanJobTitle.$invalid && !myForm.txtCanJobTitle.$pristine, 'state-success': myForm.txtCanJobTitle.$valid && !myForm.txtCanJobTitle.$pristine}">
+                                    <i class="icon-append fa fa-tag"></i>
+                                    <input type="text" id="txtCanJobTitle" name="txtCanJobTitle" placeholder="Employee Job Title" required ng-model="employeeSeperation.Candidate.Title">
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.txtCanJobTitle.$error.required">Required!</span>
+                            </section>
+                            <section class="col col-4">
+                                <label for="txtCanPhoneNumber" class="control-label">Phone Number</label>
+                                <label class="input" ng-class="{ 'state-error' : myForm.txtCanPhoneNumber.$invalid && !myForm.txtCanPhoneNumber.$pristine, 'state-success': myForm.txtCanPhoneNumber.$valid && !myForm.txtCanPhoneNumber.$pristine}">
+                                    <i class="icon-append fa fa-phone"></i>
+                                    <input type="text" name="txtCanPhoneNumber" id="txtCanPhoneNumber" ui-mask="(999) 999-9999" required ng-model="employeeSeperation.Candidate.PrimaryPhoneNumber">
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.txtCanPhoneNumber.$error.required">Required!</span>
+                            </section>
+                        </div>
+                    </fieldset>
+                    <header></header>
+                    <fieldset>
+                        <div class="row">
+                            <section class="col col-6">
+                                <label for="txtProgramArea" class="control-label">Program Area</label>
+                                <label class="input" ng-class="{ 'state-error' : myForm.txtProgramArea.$invalid && !myForm.txtProgramArea.$pristine, 'state-success': myForm.txtProgramArea.$valid && !myForm.txtProgramArea.$pristine}">
+                                    <i class="icon-append fa fa-briefcase"></i>
+                                    <input type="text" id="txtProgramArea" name="txtProgramArea" required ng-model="employeeSeperation.Candidate.ProgramName">
+                                    <i></i>
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.txtProgramArea.$error.required">Required!</span>
+                            </section>
+                            <section class="col col-6">
+                                <label for="txtTypeOfAppointment" class="control-label">Type of appointment</label>
+                                <label class="input" ng-class="{ 'state-error' : myForm.txtTypeOfAppointment.$invalid && !myForm.txtTypeOfAppointment.$pristine, 'state-success': myForm.txtTypeOfAppointment.$valid && !myForm.txtTypeOfAppointment.$pristine}">
+                                    <i class="icon-append fa fa-archive"></i>
+                                    <input type="text" id="txtTypeOfAppointment" name="txtTypeOfAppointment" required ng-model="employeeSeperation.Candidate.AffiliationName">
+                                    <i></i>
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.txtTypeOfAppointment.$error.required">Required!</span>
+                            </section>
+                        </div>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label for="txtBuilding" class="control-label">Building</label>
+                                <label class="input" ng-class="{ 'state-error' : myForm.txtBuilding.$invalid && !myForm.txtBuilding.$pristine, 'state-success': myForm.txtBuilding.$valid && !myForm.txtBuilding.$pristine}">
+                                    <i class="icon-append fa fa-home"></i>
+                                    <input type="text" id="txtBuilding" name="txtBuilding" required ng-model="employeeSeperation.Candidate.BuildingName">
+                                    <i></i>
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.txtBuilding.$error.required">Required!</span>
+                            </section>
+                            <section class="col col-4">
+                                <label for="txtRoom" class="control-label">Room</label>
+                                <label class="input" ng-class="{ 'state-error' : myForm.txtRoom.$invalid && !myForm.txtRoom.$pristine, 'state-success': myForm.txtRoom.$valid && !myForm.txtRoom.$pristine}">
+                                    <i class="icon-append fa fa-rocket"></i>
+                                    <input type="text" id="txtRoom" name="txtRoom" required ng-model="employeeSeperation.Candidate.RoomNumber">
+                                    <i></i>
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.txtRoom.$error.required">Required!</span>
+                            </section>
+                            <section class="col col-4">
+                                <label for="txtCubicleNo" class="control-label">Cubicle #</label>
+                                <label class="input" ng-class="{ 'state-error' : myForm.txtCubicleNo.$invalid && !myForm.txtCubicleNo.$pristine, 'state-success': myForm.txtCubicleNo.$valid && !myForm.txtCubicleNo.$pristine}">
+                                    <i class="icon-append fa fa-desktop"></i>
+                                    <input type="text" id="txtCubicleNo" name="txtCubicleNo" required ng-model="employeeSeperation.Candidate.CubicalNumber">
+                                    <i></i>
+                                </label>
+                                <span class="bg-danger" ng-show="formSubmitted && myForm.txtCubicleNo.$error.required">Required!</span>
+                            </section>
+                        </div>
+                    </fieldset>
+                    <header></header>
+                    <fieldset>
+                        <div class="row">
+                            <section class="col col-12">
+                                <label class="toggle">
+                                    <input type="checkbox" name="Other_Federal_Employment" class="cbHeader" value="true" ng-model="employeeSeperation.Other_Federal_Employment" id="Other_Federal_Employment">
+                                    <i data-swchon-text="YES" data-swchoff-text="NO"></i><b>Transfer to Another Federal Agency</b>
+                                </label>
+                            </section>
+                        </div>
+                        <section id="sec_AnotherFederalAgencyName" ng-show="employeeSeperation.Other_Federal_Employment">
+                            <label for="txtAnotherFedAgency" class="control-label">If YES, Name of Agency or NOAA Office</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-tag"></i>
+                                <input type="text" id="txtAnotherFedAgency" name="txtAnotherFedAgency" ng-model="employeeSeperation.Other_Federal_Employment_Details" placeholder="If YES, Name of Agency or NOAA Office">
+                            </label>
+                        </section>
+                        <div class="row">
+                            <section class="col col-6">
+                                <label for="txtDiposition_H_and_S" class="control-label">Dispostion of Hardware and Software</label>
+                                <label class="textarea">
+                                    <i class="icon-append fa fa-comment"></i>
+                                    <textarea rows="4" cols="50" placeholder="Dispostion of Hardware and Software" id="txtDiposition_H_and_S" name="txtDiposition_H_and_S" required ng-model="employeeSeperation.Diposition_H_and_S"></textarea>
+                                </label>
+                            </section>
+                            <section class="col col-6">
+                                <label for="txtSpecialRequirements" class="control-label">Special Requirements</label>
+                                <label class="textarea">
+                                    <i class="icon-append fa fa-comment"></i>
+                                    <textarea rows="4" cols="50" placeholder="Special Requirements" id="txtSpecialRequirements" name="txtSpecialRequirements" required ng-model="employeeSeperation.SpecialRequirements"></textarea>
+                                </label>
+                            </section>
+                        </div>
+                    </fieldset>
+                    <footer>
+                        <button type="submit" class="btn btn-primary" ng-disabled="isValidSubmitted"><i class="fa fa-save">&nbsp;</i>Submit</button>
+                        <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+                    </footer>
+                </form>
+
+            </div>
+            <!-- end widget content -->
+
+        </div>
+        <!-- end widget div -->
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        Intranet.Util.Global.setDatepickerOptionsForElement('DT_DateOfRequest');
+        Intranet.Util.Global.setDatepickerOptionsForElement('DT_DateOfSeperation');
+    });
+
+</script>

@@ -1,0 +1,68 @@
+﻿<div class="row">
+    <div class="col-md-8">
+        <button type="button" class="btn btn-default btn-sm" ng-click="goBack()"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i> Back</button>
+        &nbsp;&nbsp;
+        <button ng-click="filterConference='';" class="btn btn-default"> <i class="fa  fa-lightbulb-o fa-lg">&nbsp;</i> Clear Filters</button>
+        &nbsp;&nbsp;
+        <button ng-click="ReloadTable()" class="btn btn-warning btn-sm"> <i class="fa fa-refresh fa-lg">&nbsp;</i> Refresh</button>
+        &nbsp;&nbsp;
+        <button type="button" class="btn btn-primary btn-sm" ng-click="addNewConference()"><i class="fa fa-plus">&nbsp;</i> Add New Conference</button>
+    </div>
+</div>
+<hr />
+<table class="table table-bordered table-striped table-condensed table-hover">
+    <tr>
+        <th>
+            Conference Name
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" ng-model="filterConference" />
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr ng-repeat="item in tableData | filter: { ConferenceName : filterConference }">
+        <td class="col-md-9">
+            {{item.ConferenceName}}
+        </td>
+        <td class="col-md-3">
+            <a href="" class="btn btn-default btn-sm" ng-click="UpdateConference(item)"><i class="fa fa-edit">&nbsp;</i> Edit</a>
+            <a href="" class="btn btn-danger btn-sm" ng-click="DeleteConference(item)"><i class="fa fa-trash-o">&nbsp;</i> Delete</a>
+        </td>
+    </tr>
+</table>
+
+<script type="text/ng-template" id="adminConferenceAddNew.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">&times;</button>
+        <h3 class="modal-title">Add New Conference!</h3>
+    </div>
+    <div class="modal-body">
+        Conference Name:
+        <input class="form-control" name="newConfName" id="newConfName" ng-minlength="3" ng-model="item.ConferenceName" />
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="Save()"><i class="fa fa-save">&nbsp;</i>Save</button>
+        <button class="btn btn-danger" ng-click="cancel()"><i class="fa fa-undo">&nbsp;</i>Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="adminConferenceDeleteConfirmation.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="nope()">&times;</button>
+        <h3 class="modal-title">Delete Conference!</h3>
+    </div>
+    <div class="modal-body">
+        Are you sure?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="Yes()"><i class="fa fa-thumbs-o-up">&nbsp;</i>Yes, I'm sure</button>
+        <button class="btn btn-danger" ng-click="nope()"><i class="fa fa-thumbs-o-down">&nbsp;</i>Nope</button>
+    </div>
+</script>

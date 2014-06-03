@@ -1,0 +1,76 @@
+﻿<h2>TBG awards submission form </h2>
+
+<div>
+
+    <form name="myForm" id="myForm" novalidate role="form" ng-submit="submitFrom(myForm.$valid)">
+        <header>Your Information</header>
+        <fieldset>
+            <div class="form-group"
+                 ng-class="{ 'state-error' : myForm.currentName.$invalid && !myForm.currentName.$pristine, 'state-success': myForm.currentName.$valid && !myForm.currentName.$pristine}">
+                <label for="currentName">Name </label>
+                <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
+                <input type="text" name="currentName" ng-model="TBGAwardsNomination.currentUser.FirstName" class="form-control" required />
+            </div>
+            <div class="form-group"
+                 ng-class="{ 'state-error' : myForm.currentEmail.$invalid && !myForm.currentEmail.$pristine, 'state-success': myForm.currentEmail.$valid && !myForm.currentEmail.$pristine}">
+                <label for="currentEmail">E-mail address </label>
+                <span class="label label-danger" ng-show="submitted && myForm.currentEmail.$error.required">Required!</span>
+                <span class="label label-danger" ng-show="submitted && myForm.$error.currentEmail">Invalid email!</span>
+                <input type="text" name="currentEmail" ng-model="TBGAwardsNomination.currentUser.Email" class="form-control" required />
+            </div>
+        </fieldset>
+        <header>Nominee Information</header>
+        <fieldset>
+            <div class="form-group">
+                <label for="nomineeName">Name</label>
+                <span class="label label-danger" ng-show="submitted && myForm.nomineeName.$error.required">Required!</span>
+                <select name="nomineeName" ng-model="TBGAwardsNomination.nominee" ng-options="u.Name for u in allUsers" class="form-control" required>
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nominationDate">Date</label>
+                <span class="label label-danger" ng-show="submitted && myForm.nominationDate.$error.required">Required!</span>
+                <input name="nominationDate" id="nominationDate" ng-model="TBGAwardsNomination.nominationDate" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="nomineeAwardCategory">Award Category</label>
+                <span class="label label-danger" ng-show="submitted && myForm.nomineeAwardCategory.$error.required">Required!</span>
+                <select name="nomineeAwardCategory" class="form-control" ng-model="TBGAwardsNomination.nomineeAwardCategory" required>
+                    <option value=""></option>
+                    <option value="On-the-Spot Award">On-the-Spot Award</option>
+                    <option value="Outstanding Achievment Award">Outstanding Achievment Award</option>
+                    <option value="Exemplary Leadership">Exemplary Leadership</option>
+                    <option value="Exemplary Technical/Subject Matter Excellence">Exemplary Technical/Subject Matter Excellence</option>
+                    <option value="Exemplary Teamwork">Exemplary Teamwork</option>
+                    <option value="Exemplary Innovation">Exemplary Innovation </option>
+                </select>
+            </div>
+        </fieldset>
+        <hr />
+        <b>Narrative should include a description of:</b>
+        <ul>
+            <li>Project, initiative, or special act to be recognized, including impact to the organization.</li>
+            <li>Attitude towards co-workers and commitment to the organization.</li>
+            <li>Innovative approaches, creativity, leadership, etc. demonstrated by the employee.</li>
+            <li>Work ethic and commitment to quality results.</li>
+            <li>Partner or customer feedback, where appropriate.</li>
+        </ul>
+        <div class="form-group">
+            <label for="Narrative">Narrative </label>
+            <span class="label label-danger" ng-show="submitted && myForm.Narrative.$error.required">Required!</span>
+            <textarea name="Narrative" ng-model="TBGAwardsNomination.Narrative" class="form-control"></textarea>
+        </div>
+        <hr />
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="goBack();"> <i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+        </div>
+    </form>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#nominationDate').datepicker();
+    });
+</script>

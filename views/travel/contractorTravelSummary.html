@@ -1,0 +1,162 @@
+﻿<h2>Contractor Travel Summary </h2><hr />
+<div class="row">
+    <div class="col-lg-3 col-xsm-6">
+        <div class="panel mini-box">
+            <span class="box-icon bg-success">
+                <i class="fa ">{{countPending}}</i>
+            </span>
+            <div class="box-info">
+                <p class="size-h4">Pending </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xsm-6">
+        <div class="panel mini-box">
+            <span class="box-icon bg-info">
+                <i class="fa ">{{countCPMApproval}}</i>
+            </span>
+            <div class="box-info">
+                <p class="size-h4">Approved by CPM</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xsm-6">
+        <div class="panel mini-box">
+            <span class="box-icon bg-warning">
+                <i class="fa ">{{countTicketed}}</i>
+            </span>
+            <div class="box-info">
+                <p class="size-h4">Ticketed</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xsm-6">
+        <div class="panel mini-box">
+            <span class="box-icon bg-danger">
+                <i class="fa ">{{countDenied}}</i>
+            </span>
+            <div class="box-info">
+                <p class="size-h4">Denied</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<strong>Current Request's</strong>
+<div class="grid">
+    <div class="rounded">
+        <div class="top-outer">
+            <div class="top-inner">
+                <div class="top">
+
+                </div>
+            </div>
+        </div>
+        <div class="mid-outer">
+            <div class="mid-inner">
+                <div class="mid">
+                    <table class="customTable" cellspacing="0" cellpadding="8" border="0" style="color:#333333;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <th></th>
+                                <th class="first"><a style="color:#333333;">Traveler Name</a></th>
+                                <th><a style="color:#333333;">Start Date</a></th>
+                                <th><a style="color:#333333;">End Date</a></th>
+                                <th><a style="color:#333333;">Destination</a></th>
+                                <th><a style="color:#333333;">Request Date</a></th>
+                                <th><a style="color:#333333;">Status</a></th>
+                                <th><a style="color:#333333;">LastModified</a></th>
+                                <th><a style="color:#333333;">Ticketed</a></th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            <tr class="row" ng-repeat="item in initialData">
+                                <td class="first" align="center" valign="middle">  {{item.FormData.EmployeeName}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.BeginDate | fromMSDate | date:'shortDate'}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.EndDate | fromMSDate | date:'shortDate'}}</td>
+                                <td align="center" valign="middle">{{item.FormData.City +" " +item.FormData.State}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.CreatedOn | fromMSDate | date:'short' }}</td>
+                                <td align="center" valign="middle"><span ng-class="{Pending:'label label-success', 'Manager Approved':'label label-info', '':'hidden','Cancelled/Denied':'label label-danger'}[item.ElementData.Status]">{{item.ElementData.Status}}</span></td>
+
+                                <td align="center" valign="middle">
+                                    {{item.FormData.ModifiedOn | fromMSDate | date:'short'}}
+                                </td>
+                                <td align="center" valign="middle">
+                                    {{item.FormData.Ticketed}}
+                                </td>
+                                <td align="center" valign="middle">
+                                    <a ng-class="{'Ticketed?':'btn-sm btn-primary', '':'hidden'}[item.ElementData.BtnNGModel]" ng-click="btnTicket(item)">
+                                        {{item.ElementData.BtnNGModel}}
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-outer">
+            <div class="bottom-inner">
+                <div class="bottom">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<strong>Completed Request's</strong>
+<div class="grid">
+    <div class="rounded">
+        <div class="top-outer">
+            <div class="top-inner">
+                <div class="top">
+                </div>
+            </div>
+        </div>
+        <div class="mid-outer">
+            <div class="mid-inner">
+                <div class="mid">
+                    <table class="customTable" cellspacing="0" cellpadding="8" border="0" style="color:#333333;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <th></th>
+                                <th class="first"><a style="color:#333333;">Traveler Name</a></th>
+                                <th><a style="color:#333333;">Start Date</a></th>
+                                <th><a style="color:#333333;">End Date</a></th>
+                                <th><a style="color:#333333;">Destination</a></th>
+                                <th><a style="color:#333333;">Request Date</a></th>
+                                <th><a style="color:#333333;">Status</a></th>
+                                <th><a style="color:#333333;">LastModified</a></th>
+                                <th><a style="color:#333333;">Ticketed</a></th>
+
+                            </tr>
+                            <tr class="row" ng-repeat="item in completeData">
+                                <td class="first" align="center" valign="middle">  {{item.FormData.EmployeeName}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.BeginDate | fromMSDate | date:'shortDate'}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.EndDate | fromMSDate | date:'shortDate'}}</td>
+                                <td align="center" valign="middle">{{item.FormData.City +" " +item.FormData.State}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.CreatedOn | fromMSDate | date:'short'}}</td>
+                                <td align="center" valign="middle"><span ng-class="{'Ticketed':'label label-warning', '':'hidden', 'Cancelled/Denied':'label label-danger'}[item.ElementData.Status]">{{item.ElementData.Status}}</span></td>
+
+                                <td align="center" valign="middle">
+                                    {{item.FormData.ModifiedOn | fromMSDate | date:'short'}}
+                                </td>
+                                <td align="center" valign="middle">
+                                    {{item.FormData.Ticketed}}
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-outer">
+            <div class="bottom-inner">
+                <div class="bottom">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vswebessentials.com/schemas/v1/bundle.xsd">
+  <settings>
+    <!--Determines if the sprite image should be automatically optimized after creation/update.-->
+    <minify>true</minify>
+    <!--Determin whether to generate/re-generate this sprite on building the solution.-->
+    <runOnBuild>true</runOnBuild>
+    <!--Use absolute path in the generated CSS files. By default, the URLs are relative to generated bundled CSS file.-->
+    <adjustRelativePaths>false</adjustRelativePaths>
+    <!--Specifies a custom subfolder to save files to. By default, compiled output will be placed in the same folder and nested under the original file.-->
+    <outputDirectory />
+  </settings>
+  <!--The order of the <file> elements determines the order of the images in the bundle.-->
+  <files>
+    <file>/Layouts/Intranet/app/app.js</file>
+    <file>/Layouts/Intranet/app/config.js</file>
+    <file>/Layouts/Intranet/app/directives.js</file>
+    <file>/Layouts/Intranet/app/filters.js</file>
+    <file>/Layouts/Intranet/app/services.js</file>
+    <file>/Layouts/Intranet/app/admin/main_Crtl.js</file>
+    <file>/Layouts/Intranet/app/admin/homeIndex_Crtl.js</file>
+    <file>/Layouts/Intranet/app/admin/adminEmployeeDetails_Ctrl.js</file>
+    <file>/Layouts/Intranet/app/admin/adminEmployeeDetailsUpdate_Ctrl.js</file>
+    <file>/Layouts/Intranet/app/admin/adminEmployeeList_Ctrl.js</file>
+    <file>/Layouts/Intranet/app/admin/employeeChangeOfName_Crtl.js</file>
+    <file>/Layouts/Intranet/app/admin/employeeInformationUpdate_Ctrl.js</file>
+    <file>/Layouts/Intranet/app/admin/employeeLocator_Crtl.js</file>
+    <file>/Layouts/Intranet/app/admin/employeeNew_Crtl.js</file>
+    <file>/Layouts/Intranet/app/admin/employeeRelocation_Crtl.js</file>
+    <file>/Layouts/Intranet/app/admin/employeeSeparation_Crtl.js</file>
+    <file>/Layouts/Intranet/app/admin/employeeSuggestionBox_Crtl.js</file>
+    <file>/Layouts/Intranet/app/admin/employeeSuggestionResults_Crtl.js</file>
+    <file>/Layouts/Intranet/app/admin/FLETCVisitorPass_Ctrl.js</file>
+    <file>/Layouts/Intranet/app/admin/foreignVisitorPass_Ctrl.js</file>
+    <file>/Layouts/Intranet/app/admin/TBGAwards_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/adminConference_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/adminProjects_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/adminTravelCodes_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/contractorApproval_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/contractorTravelRequest_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/contractorTravelSummary_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/federalExpense_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/federalExpenseSummary_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/federalProgManagerApproval_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/federalTravelRequest_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/federalTravelSummary_Crtl.js</file>
+    <file>/Layouts/Intranet/app/travel/fedTAModalInstance_Ctrl.js</file>
+    <file>/Layouts/Intranet/app/travel/popupModalInstanceCtrl.js</file>
+  </files>
+</bundle>

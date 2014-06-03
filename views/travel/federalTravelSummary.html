@@ -1,0 +1,295 @@
+﻿
+<div class="row">
+    <div class="col-lg-3 col-xsm-6">
+        <div class="panel mini-box">
+            <span class="box-icon bg-success">
+                <i class="fa ">{{countPending}}</i>
+            </span>
+            <div class="box-info">
+                <p class="size-h4">Pending </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xsm-6">
+        <div class="panel mini-box">
+            <span class="box-icon bg-info">
+                <i class="fa ">{{countPMApproval}}</i>
+            </span>
+            <div class="box-info">
+                <p class="size-h4">Approved by PM</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xsm-6">
+        <div class="panel mini-box">
+            <span class="box-icon bg-gray">
+                <i class="fa ">{{VoucherInProcess}}</i>
+            </span>
+            <div class="box-info">
+                <p class="size-h4">Voucher In Process</p>
+            </div>
+        </div>
+    </div>
+    <!--<div class="col-lg-3 col-xsm-6">
+        <div class="panel mini-box">
+            <span class="box-icon bg-warning">
+                <i class="fa ">{{countTACompleted}}</i>
+            </span>
+            <div class="box-info">
+                <p class="size-h4">Ticketed</p>
+
+            </div>
+        </div>
+    </div>-->
+    <div class="col-lg-3 col-xsm-6">
+        <div class="panel mini-box">
+            <span class="box-icon bg-danger">
+                <i class="fa ">{{countTADenied}}</i>
+            </span>
+            <div class="box-info">
+                <p class="size-h4">Denied</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<strong>Current Travel Authorization Request</strong>
+<div class="grid">
+    <div class="rounded">
+        <div class="top-outer">
+            <div class="top-inner">
+                <div class="top">
+
+                </div>
+            </div>
+        </div>
+        <div class="mid-outer">
+            <div class="mid-inner">
+                <div class="mid">
+                    <table class="customTable" cellspacing="0" cellpadding="8" border="0" style="color:#333333;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <th></th>
+                                <th class="first"><a style="color:#333333;">Traveler Name</a></th>
+                                <th><a style="color:#333333;">Documemt Number</a></th>
+                                <th><a style="color:#333333;">Admin</a></th>
+                                <th><a style="color:#333333;">Destination</a></th>
+                                <th><a style="color:#333333;">Travel Type</a></th>
+                                <th><a style="color:#333333;">StartDate</a></th>
+                                <th><a style="color:#333333;">EndDate</a></th>
+                                <th><a style="color:#333333;">Status</a></th>
+                                <th><a style="color:#333333;">LastModified</a></th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            <tr class="row" ng-repeat="item in initialData">
+                                <td class="first" align="center" valign="middle">   {{item.FormData.FederalTravelerName||item.FormData.NonFederalTravelerName}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.AccProgramCode}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.AuthorizationInProcessName}}</td>
+                                <td align="center" valign="middle">  {{item.Destination}}</td>
+                                <td align="center" valign="middle">   {{item.FormData.TravelType}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.TravelStartDate | fromMSShortDate}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.TravelEndDate | fromMSShortDate}}</td>
+                                <td align="center" valign="middle"><span ng-class="{Pending:'label label-success', 'Manager Approved':'label label-info','Ticketed':'label label-warning', '':'hidden', 'Manager Denied':'label label-danger','Voucher In Process':'label label-default'}[item.ElementData.Status]">{{item.ElementData.Status}}</span></td>
+                                <td align="center" valign="middle">{{item.FormData.ModifiedOn | fromMSDate | date:'short'}} </td>
+                                <td align="center" valign="middle">
+                                    <a href="" ng-class="{'Start TA':'btn-sm btn-primary', '':'hidden','Complete TA':'btn btn-warning'}[item.ElementData.BtnNGModel]" ng-click="btnProcessTA(item)">
+                                        {{item.ElementData.BtnNGModel}}
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-outer">
+            <div class="bottom-inner">
+                <div class="bottom">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<strong>Completed Travel Authorization Request</strong>
+<div class="grid">
+    <div class="rounded">
+        <div class="top-outer">
+            <div class="top-inner">
+                <div class="top">
+                </div>
+            </div>
+        </div>
+        <div class="mid-outer">
+            <div class="mid-inner">
+                <div class="mid">
+                    <table class="customTable" cellspacing="0" cellpadding="8" border="0" style="color:#333333;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <th></th>
+                                <th class="first"><a style="color:#333333;">Traveler Name</a></th>
+                                <th><a style="color:#333333;">Documemt Number</a></th>
+                                <th><a style="color:#333333;">Admin</a></th>
+                                <th><a style="color:#333333;">Destination</a></th>
+                                <th><a style="color:#333333;">Travel Type</a></th>
+                                <th><a style="color:#333333;">StartDate</a></th>
+                                <th><a style="color:#333333;">EndDate</a></th>
+                                <th><a style="color:#333333;">Status</a></th>
+                                <th><a style="color:#333333;">LastModified</a></th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            <tr class="row" ng-repeat="item in completeData">
+                                <td class="first" align="center" valign="middle">   {{item.FormData.FederalTravelerName||item.FormData.NonFederalTravelerName}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.AccProgramCode}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.AuthorizationInProcessName}}</td>
+                                <td align="center" valign="middle">  {{item.Destination}}</td>
+                                <td align="center" valign="middle">   {{item.FormData.TravelType}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.TravelStartDate | fromMSShortDate}}</td>
+                                <td align="center" valign="middle"> {{item.FormData.TravelEndDate | fromMSShortDate}}</td>
+                                <td align="center" valign="middle"><span ng-class="{Pending:'label label-success', 'Manager Approved':'label label-info','Ticketed':'label label-warning', '':'hidden', 'Manager Denied':'label label-danger','Voucher In Process':'label label-default'}[item.ElementData.Status]">{{item.ElementData.Status}}</span></td>
+                                <td align="center" valign="middle">{{item.FormData.ModifiedOn | fromMSDate | date:'short'}} </td>
+                                <!--<td align="center" valign="middle">
+                                    <a ng-class="{'Start TA':'btn-sm btn-primary', '':'hidden'}[item.FormData.ElementData.BtnNGModel]" ng-click="btnTicket(item)">
+                                        {{item.FormData.ElementData.BtnNGModel}}
+                                    </a>
+                                </td>-->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-outer">
+            <div class="bottom-inner">
+                <div class="bottom">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="detailsTA.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+        <strong>Federal Travel Authorization</strong>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <span style="font-weight:500">Name:</span><span class="pull-right" style="color:#663300;font-weight:bold;">{{selectedItem.TravelersName}}</span>
+            </div>
+            <div class="col-md-6">
+                <span style="font-weight:500">Document Number</span><span class="pull-right" style="color:#663300;">{{selectedItem.BookingNumber}}</span>
+            </div>
+        </div>
+        <hr style="margin-top:2px; margin-bottom:2px;" />
+        <div class="row">
+            <div class="col-md-6">
+                <span style="font-weight:500">Travel Type:</span><span class="pull-right" style="color:#663300;font-weight:bold;"> {{selectedItem.FormData.TravelStatus | limitTo:8}}</span>
+            </div>
+            <div class="col-md-6">
+                <span style="font-weight:500">Project Code</span><span class="pull-right" style="color:#663300;font-weight:bold;">{{selectedItem.FormData.AccProgramCode}}</span>
+            </div>
+        </div>
+        <hr style="margin-top:2px; margin-bottom:2px;" />
+        <div class="row">
+            <div class="col-md-6">
+                <span style="font-weight:500">Travel Start Date:</span><span class="pull-right" style="color:#663300;font-weight:bold;"> {{selectedItem.FormData.TravelStartDate |fromMSShortDate }}</span>
+            </div>
+            <div class="col-md-6">
+                <span style="font-weight:500">Travel End Date:</span><span class="pull-right" style="color:#663300;font-weight:bold;"> {{selectedItem.FormData.TravelEndDate |fromMSShortDate}}</span>
+            </div>
+        </div>
+        <hr style="margin-top:2px; margin-bottom:2px;" />
+        <div class="row">
+            <div class="col-md-8">
+                <span style="font-weight:500">Destination: &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#663300;font-weight:bold;">  {{selectedItem.Destination}}</span>
+            </div>
+
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="txtAuthDate"><strong>TA Start Date</strong></label>
+                    <input type="text" class="form-control" ng-model="selectedItem.FormData.AuthorizationInProcessDate"
+                           name="txtAuthDate" id="txtAuthDate" readonly />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="drpTicketed"><strong> Ticketed ?</strong></label>
+                    <select class="form-control" name="drpTicketed" id="drpTicketed" ng-model="selectedItem.FormData.Ticketed">
+                        <option value="true">Yes</option>
+                        <option value="false" selected>No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <hr style="margin-top:2px; margin-bottom:2px;" />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="txtGTACost"><strong>GTA Cost</strong></label>
+                    <input type="text" class="form-control" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" maxlength="6"
+                           name="txtGTACost" id="txtGTACost" ng-model="selectedItem.FormData.GTACost" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="txtPerDiemCost"><strong>Per Diem Cost</strong></label>
+                    <input type="text" class="form-control" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" maxlength="6" ng-model="selectedItem.FormData.perdiemcost"
+                           name="txtPerDiemCost" id="txtPerDiemCost" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="txtTemporaryLOA"><strong>Temporary LOA</strong></label>
+                    <input type="text" class="form-control" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" maxlength="6" ng-model="selectedItem.FormData.TemporaryLOA"
+                           name="txtTemporaryLOA" id="txtTemporaryLOA" />
+                </div>
+            </div>
+
+        </div>
+        <hr style="margin-top:2px; margin-bottom:2px;" />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="txtHotelAmount"><strong>Hotel Amount</strong></label>
+                    <input type="text" class="form-control" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" maxlength="6" ng-model="selectedItem.HotelAmount"
+                           name="txtHotelAmount" id="txtHotelAmount" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="txtAdtravFee"><strong>ADTRAV Fee</strong></label>
+                    <input type="text" class="form-control" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" maxlength="6" ng-model="selectedItem.ADTRAVFee"
+                           name="txtAdtravFee" id="txtAdtravFee" />
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="txtOthersFee"><strong>Other fee's</strong></label>
+                    <input type="text" class="form-control" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" maxlength="6" ng-model="selectedItem.OtherFees"
+                           name="txtOthersFee" id="txtOthersFee" />
+                </div>
+            </div>
+        </div>
+        <hr style="margin-top:2px; margin-bottom:2px;" />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="txtRemarks"><strong>Remarks</strong></label>
+                    <textarea class="form-control" name="txtRemarks" id="txtRemarks" maxlength="100"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary"><i class="fa fa-save" ng-click="saveTA">&nbsp;</i>Save</button>
+        <button type="button" class="btn btn-success"><i class="fa fa-plane" ng-click="completeTA">&nbsp;</i>Complete Authorization</button>
+        <button type="button" class="btn btn-warning"><i class="fa fa-thumbs-o-down" ng-click="cancelTA">&nbsp;</i>Cancel Travel Request</button>
+    </div>
+</script>

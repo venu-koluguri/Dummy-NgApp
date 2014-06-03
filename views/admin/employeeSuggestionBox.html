@@ -1,0 +1,29 @@
+﻿<div class="container">
+    <div class="row">
+        <h2>Employee Suggestion Box </h2>
+        <p>
+            Thoughtful and constructive feedback can play an important role in improving
+            OCM operations. This page enables you to submit anonymous input
+            concerning OCM operations to OCM Leadership for consideration.
+        </p>
+        <p>
+            Please type your submission in the text box below. When you click on the submit
+            button directly below the text box it will be anonymously emailed directly to
+            OCM’s Acting Director
+        </p>
+        <header></header>
+        <fieldset>
+            <form novalidate id="myForm" name="myForm" ng-submit="submitForm(myForm.$valid)">
+                <div class="form-group"
+                     ng-class="{ 'state-error' : myForm.txtProvideFeedback.$invalid && !myForm.txtProvideFeedback.$pristine, 'state-success': myForm.txtProvideFeedback.$valid && !myForm.txtProvideFeedback.$pristine}">
+                    <label for="" class="control-label">Provide your feedback / comments</label>
+                    <textarea rows="4" placeholder="Provide your feedback / comments" id="txtProvideFeedback" name="txtProvideFeedback" class="form-control" ng-model="feedback_comments" ng-minlength="20" required></textarea>
+                </div>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

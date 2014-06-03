@@ -1,0 +1,190 @@
+﻿<section id="widget-grid" class="">
+    <!-- START ROW -->
+    <div class="row">
+        <!-- NEW COL START -->
+        <article class="col-sm-12 col-md-12 col-lg-12">
+            <div class="jarviswidget" id="Foreign_Visitor_Wid" data-widget-editbutton="false" data-widget-custombutton="false">
+                <header>
+                    <span class="widget-icon"><i class="fa fa-edit"></i></span>
+                    <h2>Foreign visitor pass form </h2>
+                </header>
+                <!-- widget div-->
+                <div>
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+                    </div>
+                    <!-- end widget edit box -->
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+
+                        <form id="myFrom" name="myForm" novalidate="novalidate" ng-submit="submitForeignVisitorPass(myForm.$valid)">
+
+                            <div class="smart-form">
+                                <header>
+                                    Sponsor Information
+                                </header>
+                                <fieldset>
+                                    <div class="row">
+                                        <section class="col col-4">
+                                            <label class="label">Name of Center Sponsor</label>
+                                            <label class="select" ng-class="{ 'state-error' : myForm.drp_CenterSponsor.$invalid && !myForm.drp_CenterSponsor.$pristine, 'state-success': myForm.drp_CenterSponsor.$valid && !myForm.drp_CenterSponsor.$pristine}">
+                                                <select name="drp_CenterSponsor" ng-model="foreignVisitorPassFrom.PrimarySponsor" id="drp_CenterSponsor" ng-options="u.Name for u in allUsers | fedUsers" required>
+                                                    <option value="0" selected="" disabled="">Name of Center Sponsor</option>
+                                                </select>
+                                                <i></i>
+                                            </label>
+                                        </section>
+                                        <section class="col col-4">
+                                            <label class="label">Email</label>
+                                            <label class="input" ng-class="{ 'state-error' : myForm.txtSponsorEmail.$invalid && !myForm.txtSponsorEmail.$pristine, 'state-success': myForm.txtSponsorEmail.$valid && !myForm.txtSponsorEmail.$pristine}">
+                                                <i class="icon-append fa fa-envelope"></i>
+                                                <input type="text" id="txtSponsorEmail" name="txtSponsorEmail" ng-model="foreignVisitorPassFrom.PrimarySponsor.Email" placeholder="Email" required>
+                                            </label>
+                                        </section>
+                                        <section class="col col-4">
+                                            <label class="label">Phone</label>
+                                            <label class="input" ng-class="{ 'state-error' : myForm.txtSponsorPhoneNum.$invalid && !myForm.txtSponsorPhoneNum.$pristine, 'state-success': myForm.txtSponsorPhoneNum.$valid && !myForm.txtSponsorPhoneNum.$pristine}">
+                                                <i class="icon-prepend fa fa-phone"></i>
+                                                <input type="text" name="txtSponsorPhoneNum" id="txtSponsorPhoneNum" ng-model="foreignVisitorPassFrom.PrimarySponsor.PrimaryPhoneNumber" ui-mask="(999) 999-9999" required>
+                                            </label>
+                                        </section>
+                                    </div>
+                                </fieldset>
+                                <header>Visitor Information</header>
+                                <fieldset>
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <label class="label">Name of Visitor</label>
+                                            <label class="input" ng-class="{ 'state-error' : myForm.txtVisitorName.$invalid && !myForm.txtVisitorName.$pristine, 'state-success': myForm.txtVisitorName.$valid && !myForm.txtVisitorName.$pristine}">
+                                                <i class="icon-append fa fa-user"></i>
+                                                <input type="text" id="txtVisitorName" name="txtVisitorName" placeholder="Name of Visitor" required ng-minlength="3" ng-model="foreignVisitorPassFrom.VisitorName" />
+                                            </label>
+                                        </section>
+                                        <section class="col col-6">
+                                            <label class="label">Company Affiliation</label>
+                                            <label class="input" ng-class="{ 'state-error' : myForm.txtCompanyAffilication.$invalid && !myForm.txtCompanyAffilication.$pristine, 'state-success': myForm.txtCompanyAffilication.$valid && !myForm.txtCompanyAffilication.$pristine}">
+                                                <i class="icon-append fa fa-briefcase"></i>
+                                                <input type="text" id="txtCompanyAffilication" name="txtCompanyAffilication" placeholder="Company Affiliation" ng-model="foreignVisitorPassFrom.CompanyAffilication" ng-minlength="3" required>
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                        <section class="col col-4">
+                                            <label class="label">Purpose of Visit</label>
+                                            <label class="select" ng-class="{ 'state-error' : myForm.drpPurposeOfVisit.$invalid && !myForm.drpPurposeOfVisit.$pristine, 'state-success': myForm.drpPurposeOfVisit.$valid && !myForm.drpPurposeOfVisit.$pristine}">
+                                                <select name="drpPurposeOfVisit" id="drpPurposeOfVisit" ng-model="foreignVisitorPassFrom.PurposeOfVisit" required>
+                                                    <option value="0" selected="" disabled="">Purpose of Visit</option>
+                                                    <option value="Visiting staff">Visiting staff</option>
+                                                    <option value="Subcontractor">Subcontractor</option>
+                                                    <option value="Training">Training</option>
+                                                    <option value="Student">Student</option>
+                                                    <option value="Meeting">Meeting</option>
+                                                    <option value="New Employee">New Employee</option>
+                                                    <option value="Vendor">Vendor</option>
+                                                    <option value="Facilitator">Facilitator</option>
+                                                    <option value="Conference">Conference</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                                <i></i>
+                                            </label>
+                                        </section>
+                                        <section class="col col-4">
+                                            <label class="label">Beginning Date of Visit</label>
+                                            <label class="input" ng-class="{ 'state-error' : myForm.DT_StartDateOfVisit.$invalid && !myForm.DT_StartDateOfVisit.$pristine, 'state-success': myForm.DT_StartDateOfVisit.$valid && !myForm.DT_StartDateOfVisit.$pristine}">
+                                                <i class="icon-append fa fa-calendar"></i>
+                                                <input type="text" name="DT_StartDateOfVisit" id="DT_StartDateOfVisit" placeholder="Beginning Date of Visit" ng-model="foreignVisitorPassFrom.BeginDate" required>
+                                            </label>
+                                        </section>
+                                        <section class="col col-4">
+                                            <label class="label">Ending Date of Visit</label>
+                                            <label class="input" ng-class="{ 'state-error' : myForm.DT_EndDateOfVisit.$invalid && !myForm.DT_EndDateOfVisit.$pristine, 'state-success': myForm.DT_EndDateOfVisit.$valid && !myForm.DT_EndDateOfVisit.$pristine}">
+                                                <i class="icon-append fa fa-calendar"></i>
+                                                <input type="text" name="DT_EndDateOfVisit" id="DT_EndDateOfVisit" placeholder="Ending Date of Visit" ng-model="foreignVisitorPassFrom.EndDate" required>
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <section>
+                                        <label class="label">NOAA facilities to be visited</label>
+                                        <label class="textarea" ng-class="{ 'state-error' : myForm.txtNOAAFacilitiesOfVisit.$invalid && !myForm.txtNOAAFacilitiesOfVisit.$pristine, 'state-success': myForm.txtNOAAFacilitiesOfVisit.$valid && !myForm.txtNOAAFacilitiesOfVisit.$pristine}">
+                                            <i class="icon-append fa fa-comment"></i>
+                                            <textarea rows="4" placeholder="NOAA facilities to be visited" id="txtNOAAFacilitiesOfVisit" name="txtNOAAFacilitiesOfVisit" ng-model="foreignVisitorPassFrom.NOAA_FacilitiesToBeVisited" required></textarea>
+                                            <b class="tooltip tooltip-top-right">
+                                                <i class="fa fa-warning txt-color-teal"></i>
+                                                Please provide a description of the visit. For example, the name of training or conference, name of vendor or other nature of business.
+                                            </b>
+                                        </label>
+                                    </section>
+                                    <hr />
+
+                                </fieldset>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <b>You must now do the following in order to get foreign visitor approval:</b>
+                                    <ul>
+                                        <li>
+                                            <p>Read this <a href="https://docs.google.com/a/noaa.gov/file/d/0BwgJL2MJPwzkamVJbV9ZZXdtemZBRk4zdjR4Q1dMMEVyUG5v/edit" target="_blank">security briefing</a> and this <a href="https://docs.google.com/a/noaa.gov/file/d/0BwgJL2MJPwzkRGw0cFFJdGs3Y2hqSUtNUGd1MXoyVXdVcGdV/edit">espionage indicators briefing</a></p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Fill out, sign and fax the following forms to Angela Veney at (301) 713-4004:
+                                                <ul>
+                                                    <li>
+                                                        <a href="https://docs.google.com/a/noaa.gov/file/d/0BwgJL2MJPwzkaXRsNi1wTFRNOEhiWmt5VTJKb0RmMGhyMHJZ/edit" target="_blank">foreign national visitor guest form</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://docs.google.com/a/noaa.gov/file/d/0BwgJL2MJPwzkZTJzbi1qc29YVGFWWVF3endHZDN4WWhYck00/edit" target="_blank">espionage acknowledgement statement</a>
+                                                    </li>
+                                                </ul>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                IF the visitor will need access to the Charleston office, fill out and take these forms to Linda Hamalak
+                                                <ul>
+                                                    <li>
+                                                        FLETC form <a href="http://csc-s-spdev2013.csc.noaa.gov/VisitorPass/FTC-SEM-017b1-Dec08.pdf" target="_blank">017b1</a>
+                                                    </li>
+                                                    <li>
+                                                        FLETC form <a href="http://csc-s-spdev2013.csc.noaa.gov/VisitorPass/FTC-SEM-017b2-Dec08.pdf" target="_blank">017b2</a>
+                                                    </li>
+                                                </ul>
+                                            </p>
+                                        </li>
+                                        <b>
+                                            If you have any questions, please contact <a href="mailto:angela.veney@Noaa.gov">Angela Veney</a> or <a href="mailto:linda.hamalak@noaa.gov">Linda Hamalak</a>
+                                        </b>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                            <hr />
+                            <br />
+                            <div class="smart-form">
+                                <footer>
+                                    <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+                                    <button type="submit" id="btn_Sumbit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+                                </footer>
+                            </div>
+                        </form>
+
+                    </div>
+                    <!-- end widget content -->
+                </div>
+                <!-- end widget div -->
+            </div>
+            <!-- end widget -->
+        </article>
+        <!-- END COL -->
+    </div>
+    <!-- END ROW -->
+</section>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        Intranet.Util.Global.setDatepickerOptionsForStartEnd('DT_StartDateOfVisit', 'DT_EndDateOfVisit', 2);
+    });
+</script>
