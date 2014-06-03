@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group"
-                 ng-class="{ 'state-error' : myForm.currentName.$invalid && !myForm.currentName.$pristine, 'state-success': myForm.currentName.$valid && !myForm.currentName.$pristine}">
+                 ng-class="{ 'has-error' : myForm.currentName.$invalid && !myForm.currentName.$pristine, 'has-success': myForm.currentName.$valid && !myForm.currentName.$pristine}">
                 <label for="currentName">Your Current First Name </label>
                 <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
                 <input type="text" name="currentFirstName" readonly ng-model="currentUser.FirstName" class="form-control" required />
@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group"
-                 ng-class="{ 'state-error' : myForm.currentLastName.$invalid && !myForm.currentLastName.$pristine, 'state-success': myForm.currentLastName.$valid && !myForm.currentLastName.$pristine}">
+                 ng-class="{ 'has-error' : myForm.currentLastName.$invalid && !myForm.currentLastName.$pristine, 'has-success': myForm.currentLastName.$valid && !myForm.currentLastName.$pristine}">
                 <label for="currentName">Your Current Last Name </label>
                 <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
                 <input type="text" name="currentLastName" readonly ng-model="currentUser.LastName" class="form-control" required />
@@ -22,7 +22,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group"
-                 ng-class="{ 'state-error' : myForm.currentEmail.$invalid && !myForm.currentEmail.$pristine, 'state-success': myForm.currentEmail.$valid && !myForm.currentEmail.$pristine}">
+                 ng-class="{ 'has-error' : myForm.currentEmail.$invalid && !myForm.currentEmail.$pristine, 'has-success': myForm.currentEmail.$valid && !myForm.currentEmail.$pristine}">
                 <label for="currentEmail">Your Current E-mail address </label>
                 <span class="label label-danger" ng-show="submitted && myForm.currentEmail.$error.required">Required!</span>
                 <span class="label label-danger" ng-show="submitted && myForm.$error.currentEmail">Invalid email!</span>
@@ -33,7 +33,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group"
-                 ng-class="{ 'state-error' : myForm.phoneNumber.$invalid && !myForm.phoneNumber.$pristine, 'state-success': myForm.phoneNumber.$valid && !myForm.phoneNumber.$pristine}">
+                 ng-class="{ 'has-error' : myForm.phoneNumber.$invalid && !myForm.phoneNumber.$pristine, 'has-success': myForm.phoneNumber.$valid && !myForm.phoneNumber.$pristine}">
                 <label for="phoneNumber">Your Contact Number </label>
                 <span class="label label-danger" ng-show="submitted && myForm.currentEmail.$error.required">Required!</span>
                 <input type="tel" name="phoneNumber" readonly ng-model="currentUser.PrimaryPhoneNumber" class="form-control" required />
@@ -41,7 +41,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group"
-                 ng-class="{ 'state-error' : myForm.programManager.$invalid && !myForm.programManager.$pristine, 'state-success': myForm.programManager.$valid && !myForm.programManager.$pristine}">
+                 ng-class="{ 'has-error' : myForm.programManager.$invalid && !myForm.programManager.$pristine, 'has-success': myForm.programManager.$valid && !myForm.programManager.$pristine}">
                 <label for="programManager">Your Program Manager </label>
                 <span class="label label-danger" ng-show="submitted && myForm.programManager.$error.required">Required!</span>
                 <input type="text" name="programManager" readonly ng-model="currentUser.ManagerName" class="form-control" required />
@@ -53,7 +53,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group"
-                 ng-class="{ 'state-error' : myForm.firstName.$invalid && !myForm.firstName.$pristine, 'state-success': myForm.firstName.$valid && !myForm.firstName.$pristine}">
+                 ng-class="{ 'has-error' : myForm.firstName.$invalid && !myForm.firstName.$pristine, 'has-success': myForm.firstName.$valid && !myForm.firstName.$pristine}">
                 <label for="firstName">Requested new First Name </label>
                 <span class="label label-danger" ng-show="submitted && myForm.firstName.$error.required">Required!</span>
                 <input type="text" name="firstName" ng-model="empNameChangeDetails.ReqFirstName" class="form-control" required />
@@ -61,7 +61,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group"
-                 ng-class="{ 'state-error' : myForm.lastName.$invalid && !myForm.lastName.$pristine, 'state-success': myForm.lastName.$valid && !myForm.lastName.$pristine}">
+                 ng-class="{ 'has-error' : myForm.lastName.$invalid && !myForm.lastName.$pristine, 'has-success': myForm.lastName.$valid && !myForm.lastName.$pristine}">
                 <label for="lastName">Requested new Last Name </label>
                 <span class="label label-danger" ng-show="submitted && myForm.lastName.$error.required">Required!</span>
                 <input type="text" name="lastName" ng-model="empNameChangeDetails.ReqLastName" class="form-control" required />
@@ -72,7 +72,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group"
-                 ng-class="{ 'state-error' : myForm.newEmail.$invalid && !myForm.newEmail.$pristine, 'state-success': myForm.newEmail.$valid && !myForm.newEmail.$pristine}">
+                 ng-class="{ 'has-error' : myForm.newEmail.$invalid && !myForm.newEmail.$pristine, 'has-success': myForm.newEmail.$valid && !myForm.newEmail.$pristine}">
                 <label for="newEmail">Requested new  E-mail address</label>
                 <span class="label label-danger" ng-show="submitted && myForm.newEmail.$error.required">Required!</span>
                 <span class="label label-danger" ng-show="submitted && myForm.$error.newEmail">Invalid email!</span>
