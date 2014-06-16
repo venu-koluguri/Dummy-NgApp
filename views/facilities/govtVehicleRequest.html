@@ -1,0 +1,137 @@
+<div class="container">
+    <div class="row">
+        <header>
+            <h3>Govt Vehicle Request</h3>    
+        </header>
+        <form name="myForm" id="myForm" class="" novalidate role="form" ng-submit="submitForm(myForm.$valid)">
+            <header>User Information</header>
+            <fieldset>
+                <div class="row">
+                    <section class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.currentName.$invalid && !myForm.currentName.$pristine, 'has-success': myForm.currentName.$valid && !myForm.currentName.$pristine}">
+                            <label for="currentName">First Name </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
+                            <input type="text" name="currentFirstName" readonly ng-model="govtVehicleRequest.FirstName" class="form-control" required />
+                        </div>
+                    </section>
+                    <section class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.currentLastName.$invalid && !myForm.currentLastName.$pristine, 'has-success': myForm.currentLastName.$valid && !myForm.currentLastName.$pristine}">
+                            <label for="currentName">Last Name </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
+                            <input type="text" name="currentLastName" readonly ng-model="govtVehicleRequest.LastName" class="form-control" required />
+                        </div>
+                    </section>
+                    <section class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.currentEmail.$invalid && !myForm.currentEmail.$pristine, 'has-success': myForm.currentEmail.$valid && !myForm.currentEmail.$pristine}">
+                            <label for="currentEmail">Email </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.currentEmail.$error.required">Required!</span>
+                            <input type="text" name="currentEmail" readonly ng-model="govtVehicleRequest.Email" class="form-control" required />
+                        </div>
+                    </section>
+                     <section class="col-md-3">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.phoneNumber.$invalid && !myForm.phoneNumber.$pristine, 'has-success': myForm.phoneNumber.$valid && !myForm.currentEmail.$pristine}">
+                            <label for="phoneNumber">Office Phone/extension </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.phoneNumber.$error.required">Required!</span>
+                            <span class="label label-danger" ng-show="submitted && myForm.$error.phoneNumber">Invalid email!</span>
+                            <input type="tel" name="phoneNumber" readonly ng-model="govtVehicleRequest.PrimaryPhoneNumber" class="form-control" required />
+                        </div>
+                    </section>
+                </div>
+            </fieldset>
+
+            <hr/>
+            <fieldset>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.txtDepartureDate.$invalid && !myForm.txtDepartureDate.$pristine, 'has-success': myForm.txtDepartureDate.$valid && !myForm.txtDepartureDate.$pristine}">
+                            <label for="txtDepartureDate">Departure Date:</label>
+                            <!--<div class="input-group">-->
+                            <input type="text" name="txtDepartureDate" required ng-model="govtVehicleRequest.Departure_Date" id="txtDepartureDate" placeholder="Departure Date" class="form-control  datepicker" data-dateformat="dd/mm/yy">
+                            <!--<span class="input-group-addon"><i class="fa fa-calendar "></i></span>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="departureTimepicker">Time:</label>
+                            <select class="form-control" name="drpDeparture_Time" id="drpDeparture_Time" required ng-model="govtVehicleRequest.Departure_Time" ng-options="t as t for t in timeModels"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.txtReturnDate.$invalid && !myForm.txtReturnDate.$pristine, 'has-success': myForm.txtReturnDate.$valid && !myForm.txtReturnDate.$pristine}">
+                            <label for="txtReturnDate">Return Date:</label>
+                            <!--<div class="input-group">-->
+                            <input type="text" name="txtReturnDate" id="txtReturnDate" required ng-model="govtVehicleRequest.Return_Date" placeholder="Return Date" class="form-control  datepicker" data-dateformat="dd/mm/yy">
+                            <!--<span class="input-group-addon"><i class="fa fa-calendar "></i></span>-->
+                            <!--</div>-->
+
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="txtReturnDate">Time:</label>
+                            <select class="form-control" name="drpReturn_Time" id="drpReturn_Time" required ng-model="govtVehicleRequest.Return_Time" ng-options="t as t for t in timeModels"></select>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <hr/>
+            <fieldset>
+                <div class="row">
+                    <div class="col-md-12">
+                         <div class="form-group">
+                            <label for="currentName">Vehicle Desired </label>
+                            <input type="text" name="VehicleName" ng-model="govtVehicleRequest.VehicleName" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-md-12">
+                         <div class="form-group">
+                            <label for="tripDescription">State Official Business Being Conducted</label>
+                            <textarea rows="4" name="tripDescription" ng-model="govtVehicleRequest.tripDescription" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>
+                           Request permission to take the vehicle to private residence during the reserved time
+                        </label>
+                        <div class="">
+                            <label class="radio radio-inline" ng-repeat="n in ['Yes','No']">
+                                <input type="radio" name="privatePermission" class="radiobox" ng-model="govtVehicleRequest.privatePermission" ng-value="n">
+                                <span>{{n}}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+                </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function init() {
+
+        Intranet.Util.Global.setDatepickerOptionsForStartEnd('txtDepartureDate', 'txtReturnDate', 1);
+       
+
+    }
+
+    $(document).ready(function () {
+        init();
+    });
+</script>

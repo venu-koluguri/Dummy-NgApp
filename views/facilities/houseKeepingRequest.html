@@ -1,0 +1,89 @@
+
+
+<h3>Facility & Housekeeping Problem/Assistance </h3>
+<form name="myForm" id="myForm" class="smart-form" novalidate role="form" ng-submit="submitForm(myForm.$valid)">
+
+    <div class="row">
+        <section class="col col-4">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : myForm.currentName.$invalid && !myForm.currentName.$pristine, 'has-success': myForm.currentName.$valid && !myForm.currentName.$pristine}">
+                <label for="currentName">First Name </label>
+                <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
+                <input type="text" name="currentFirstName" readonly ng-model="houseKeepingRequest.FirstName" class="form-control" required />
+            </div>
+        </section>
+        <section class="col col-4">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : myForm.currentLastName.$invalid && !myForm.currentLastName.$pristine, 'has-success': myForm.currentLastName.$valid && !myForm.currentLastName.$pristine}">
+                <label for="currentName">Last Name </label>
+                <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
+                <input type="text" name="currentLastName" readonly ng-model="houseKeepingRequest.LastName" class="form-control" required />
+            </div>
+        </section>
+        <section class="col col-4">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : myForm.currentEmail.$invalid && !myForm.currentEmail.$pristine, 'has-success': myForm.currentEmail.$valid && !myForm.currentEmail.$pristine}">
+                <label for="currentEmail">Employee Email Address for receipt </label>
+                <span class="label label-danger" ng-show="submitted && myForm.currentEmail.$error.required">Required!</span>
+                <span class="label label-danger" ng-show="submitted && myForm.$error.currentEmail">Invalid email!</span>
+                <input type="text" name="currentEmail" readonly ng-model="houseKeepingRequest.Email" class="form-control" required />
+            </div>
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : myForm.phoneNumber.$invalid && !myForm.phoneNumber.$pristine, 'has-success': myForm.phoneNumber.$valid && !myForm.phoneNumber.$pristine}">
+                <label for="phoneNumber">Phone Number</label>
+                <span class="label label-danger" ng-show="submitted && myForm.currentEmail.$error.required">Required!</span>
+                <input type="tel" name="phoneNumber" readonly ng-model="houseKeepingRequest.PrimaryPhoneNumber" class="form-control" required />
+            </div>
+        </section>
+        <section class="col col-6">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : myForm.programManager.$invalid && !myForm.programManager.$pristine, 'has-success': myForm.programManager.$valid && !myForm.programManager.$pristine}">
+                <label for="programManager">Program Manager </label>
+                <span class="label label-danger" ng-show="submitted && myForm.programManager.$error.required">Required!</span>
+                <input type="text" name="programManager" readonly ng-model="houseKeepingRequest.ManagerName" class="form-control" required />
+            </div>
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-4">
+            <label class="control-label" for="drpCanBuilding">Building</label>
+            <label class="input">
+                <i class="icon-append fa fa-tag"></i>
+                <input type="text" name="drpCanBuilding" id="drpCanBuilding" ng-model="houseKeepingRequest.Candidate.BuildingName"
+                       ng-options="loc.BuildingName for loc in empLocation">
+            </label>
+        </section>
+        <section class="col col-4">
+            <label class="control-label" for="txtCanRoom">Room</label>
+            <label class="input" ng-class="{ 'state-error' : myForm.txtCanRoom.$invalid && !myForm.txtCanRoom.$pristine, 'state-success': myForm.txtCanRoom.$valid && !myForm.txtCanRoom.$pristine}">
+                <i class="icon-append fa fa-tag"></i>
+                <input type="text" id="txtCanRoom" name="txtCanRoom" placeholder="Room" ng-model="houseKeepingRequest.Candidate.RoomNumber">
+            </label>
+        </section>
+        <section class="col col-4">
+            <label class="control-label" for="txtCanCubicalNo">Cubical</label>
+            <label class="input" ng-class="{ 'state-error' : myForm.txtCanCubicalNo.$invalid && !myForm.txtCanCubicalNo.$pristine, 'state-success': myForm.txtCanCubicalNo.$valid && !myForm.txtCanCubicalNo.$pristine}">
+                <i class="icon-append fa fa-tag"></i>
+                <input name="txtCanCubicalNo" id="txtCanCubicalNo" ng-model="houseKeepingRequest.Candidate.CubicalNo">
+                <i></i>
+            </label>
+        </section>
+    </div>
+
+    <div class="row">
+        <section class="col col-10">
+            <div class="form-group">
+                <label for="additionalComments">Description of the problem/assistance</label>
+                <textarea rows="4" name="additionalComments" ng-model="houseKeepingRequest.ProbelmDescription" class="form-control"></textarea>
+            </div>
+        </section>
+    </div>
+    <div class="pull-right">
+        <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+    </div>
+</form>

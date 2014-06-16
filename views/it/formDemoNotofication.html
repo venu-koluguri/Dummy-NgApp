@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="jarviswidget">
+        <div>
+            <div class="widget-body no-padding">
+                <header>
+                    <h3 class="text-center">Property Pass Request</h3>    
+                </header>
+
+                <form name="myForm" id="myForm" class="smart-form" novalidate role="form" ng-submit="submitForm(myForm.$valid)">
+                    <header></header>
+                    <fieldset>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="control-label" for="txtDemoDate">Demo date:</label>
+                                <label class="input"
+                                     ng-class="{ 'state-error' : myForm.txtDemoDate.$invalid && !myForm.txtDemoDate.$pristine, 'state-success': myForm.txtDemoDate.$valid && !myForm.txtDemoDate.$pristine}">
+                                    <input type="text" name="txtDemoDate" required ng-model="demoNotifyRequest.DemoDate" id="txtDemoDate" placeholder="Demo Date" class="datepicker" data-dateformat="dd/mm/yy">
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <div class="row">
+                                    <section class="col col-6">
+                                        <label for="Start_Time">Start Time:</label>
+                                        <label class="select">                                    
+                                            <select class="form-control" name="drpStart_Time" id="drpStart_Time" required ng-model="demoNotifyRequest.Start_Time" ng-options="t as t for t in timeModels"></select>
+                                            <i></i>
+                                        </label>
+                                    </section>
+                                    <section class="col col-6">
+                                        <label for="End_Time">End Time:</label>
+                                        <label class="select">                                    
+                                            <select  name="drpEnd_Time" id="drpEnd_Time" required ng-model="demoNotifyRequest.End_Time" ng-options="t as t for t in timeModels"></select>
+                                            <i></i>
+                                        </label>
+                                    </section>
+                                </div>
+                            </section>
+                             <section class="col col-4">
+                                <label class="control-label" for="txtCancelDate">Cancel Date(if applicable)</label>
+                                <label class="input"
+                                     ng-class="{ 'state-error' : myForm.txtCancelDate.$invalid && !myForm.txtCancelDate.$pristine, 'state-success': myForm.txtCancelDate.$valid && !myForm.txtCancelDate.$pristine}">                           
+                                    <input type="text" name="txtCancelDate" required ng-model="demoNotifyRequest.CancelDate" id="txtCancelDate" placeholder="Cacel Date" class="datepicker" data-dateformat="dd/mm/yy">
+                                </label>
+                            </section>             
+                        </div>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label for="drpLocation" class="control-label">Location </label>
+                                <label class="select"
+                                     ng-class="{ 'has-error' : myForm.drpLocation.$invalid && !myForm.drpLocation.$pristine, 'has-success': myForm.drpLocation.$valid && !myForm.drpLocation.$pristine}">                          
+                                     <select name="drpLocation" required ng-model="demoNotifyRequest.Location" ng-options="Loc.Name for Loc in Locations">
+                                     <span class="bg-danger" ng-show="submitted && myForm.drpLocation.$error.required">Required!</span>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label for="Start_Time">Product:</label>
+                                <label class="select"
+                                        ng-class="{ 'has-error' : myForm.drpProduct.$invalid && !myForm.drpProduct.$pristine, 'has-success': myForm.drpProduct.$valid && !myForm.drpProduct.$pristine}">                                    
+                                    <select name="drpProduct" id="drpProduct" required ng-model="demoNotifyRequest.Product" ng-options="p.Id as P.name for P in Products"></select>
+                                    <i></i>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label for="Start_Time">Employee:</label>
+                                <label class="select"
+                                        ng-class="{ 'has-error' : myForm.drpProduct.$invalid && !myForm.drpProduct.$pristine, 'has-success': myForm.drpProduct.$valid && !myForm.drpProduct.$pristine}">                                    
+                                    <select name="drpProduct" id="drpProduct" required ng-model="demoNotifyRequest.Product" ng-options="Emp.Name for Emp in allUsers"></select>
+                                    <i></i>
+                                </label>
+                            </section>                   
+                        </div>
+                        <div class="row">
+                            <section class="col col-10">
+                                <label for="txtContactinfo" class="control-label">Contact info</label>
+                                <label class="textarea" 
+                                        ng-class="{ 'state-error' : myForm.txtContactinfo.$invalid && !myForm.txtContactinfo.$pristine, 'state-success': myForm.txtContactinfo.$valid && !myForm.txtContactinfo.$pristine}">
+                                    <i class="icon-append fa fa-comment"></i>
+                                    <textarea rows="4" cols="50" placeholder="Contact info @ demo time" id="txtContactinfo" name="txtContactinfo" required ng-model="demoNotifyRequest.Contact"></textarea>
+                                </label>
+                            </section>
+                        </div>
+                               
+                    </fieldset> 
+                    <footer>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+                        </div>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function init() {
+
+        Intranet.Util.Global.setDatepickerOptionsForStartEnd('txtDemoDate', 'txtCancelDate', 1);
+       
+
+    }
+
+    $(document).ready(function () {
+        init();
+    });
+</script>

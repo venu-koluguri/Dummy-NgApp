@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row">
+        <h2>Story Idea Submission </h2>
+        <p>
+            Submit your story idea here if you want to spread the word about how coastal communities are benefiting from a particular product, service, partnership, initiative, project, or type of support.
+        </p>
+        <p>
+            Communications staff members will review your submission, discuss details with you, and help decide and plan the best options for outreach. These options include internal and external newsletters, Web articles, Coastal Services magazine, NOAA and National Ocean Service websites, partner publications, outside media venues, and Twitter, Facebook, and other social media.
+        </p>
+        <p>For guidance on writing story idea reports, click here. For story submission examples, click here</p>
+        <header></header>
+        <fieldset>
+            <form novalidate="novalidate" id="myForm" name="myForm" ng-submit="submitForm(myForm.$valid)">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" 
+                            ng-class="{ 'state-error' : myForm.title.$invalid && !myForm.title.$pristine, 'state-success': myForm.title.$valid && !myForm.title.$pristine}">
+                            <label for="" class="control-label">Title</label>
+                            <input type="text" ng-model="storyIdeaRequest.title" name="title" class="form-control" id="title" ng-minlength="6" ng-maxlength="24" placeholder="Focus on a beneficial action or result" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group"
+                             ng-class="{ 'state-error' : myForm.body.$invalid && !myForm.body.$pristine, 'state-success': myForm.body.$valid && !myForm.body.$pristine}">
+                            <label for="" class="control-label">Body</label>
+                            <textarea rows="4" placeholder="Clearly state the benefit, impact, or outcome" id="body" name="body" class="form-control" ng-model="storyIdeaRequest.body" ng-minlength="20" ng-maxlength="240" required></textarea>
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group"
+                             ng-class="{ 'state-error' : myForm.significance.$invalid && !myForm.significance.$pristine, 'state-success': myForm.significance.$valid && !myForm.significance.$pristine}">
+                            <label for="" class="control-label">Significance</label>
+                            <textarea rows="3" placeholder="Why does it matter?" id="significance" name="significance" class="form-control" ng-model="storyIdeaRequest.significance" ng-minlength="10" ng-maxlength="100" required></textarea>
+                            <p class="help-text">
+                                If you have already answered this question in the body, feel free to copy and paste below.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'state-error' : myForm.name.$invalid && !myForm.name.$pristine, 'state-success': myForm.name.$valid && !myForm.name.$pristine}">
+                            <label for="name">Name </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.name.$error.required">Required!</span>
+                            <input type="text" name="name" id="name" ng-model="storyIdeaRequest.name" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'state-error' : myForm.email.$invalid && !myForm.email.$pristine, 'state-success': myForm.email.$valid && !myForm.email.$pristine}">
+                            <label for="email">Email Address: </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.email.$error.required">Required!</span>
+                            <input type="email" id="email" name="email" ng-model="storyIdeaRequest.email" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'state-error' : myForm.phonenumber.$invalid && !myForm.phonenumber.$pristine, 'state-success': myForm.phonenumber.$valid && !myForm.phonenumber.$pristine}">
+                            <label for="phonenumber">Phone Number, Including Area Code: </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.phonenumber.$error.required">Required!</span>
+                            <input type="text" id="phonenumber" name="phonenumber" ng-model="storyIdeaRequest.phonenumber" class="form-control" ui-mask="(999) 999-9999" required />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pull-right">
+                    <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

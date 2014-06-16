@@ -1,0 +1,208 @@
+<div class="container">
+    <div class="">
+        <header>
+            <h3>Property Pass Request</h3>    
+        </header>
+
+        <form name="myForm" id="myForm" class="" novalidate role="form" ng-submit="submitForm(myForm.$valid)">
+            <header></header>
+            <fieldset>
+                <div class="row">
+                    <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.currentName.$invalid && !myForm.currentName.$pristine, 'has-success': myForm.currentName.$valid && !myForm.currentName.$pristine}">
+                            <label for="currentName" class="control-label">First Name <span class="text-danger">*</span></label>
+                            <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
+                            <input type="text" name="currentFirstName" readonly ng-model="contactHelpRequest.FirstName" class="form-control" required />
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.currentLastName.$invalid && !myForm.currentLastName.$pristine, 'has-success': myForm.currentLastName.$valid && !myForm.currentLastName.$pristine}">
+                            <label for="currentName" class="control-label">Last Name <span class="text-danger">*</span></label>
+                            <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
+                            <input type="text" name="currentLastName" readonly ng-model="contactHelpRequest.LastName" class="form-control" required />
+                        </div>
+                    </section>
+                     <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.currentEmail.$invalid && !myForm.currentEmail.$pristine, 'has-success': myForm.currentEmail.$valid && !myForm.currentEmail.$pristine}">
+                            <label for="currentEmail" class="control-label">Email </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.currentEmail.$error.required">Required!</span>
+                            <input type="text" name="currentEmail" readonly ng-model="contactHelpRequest.Email" class="form-control" required />
+                        </div>
+                    </section>             
+                </div>
+                <div class="row">
+                    <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.programManager.$invalid && !myForm.programManager.$pristine, 'has-success': myForm.programManager.$valid && !myForm.programManager.$pristine}">
+                            <label for="programManager" class="control-label">Program Manager <span class="text-danger">*</span> </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.programManager.$error.required">Required!</span>
+                            <input type="text" name="programManager" readonly ng-model="contactHelpRequest.ManagerName" class="form-control" required />
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="form-group"  ng-class="{ 'state-error' : myForm.drpBuildingName.$invalid && !myForm.drpBuildingName.$pristine, 'state-success': myForm.drpBuildingName.$valid && !myForm.drpBuildingName.$pristine}" >
+                            <label class="control-label" for="drpBuildingName">Building</label>
+                            <input type="text" name="drpBuildingName" id="drpBuildingName" ng-model="houseKeepingRequest.BuildingName" class="form-control" ng-options="loc.BuildingName for loc in empLocation">
+                        </label>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="row">
+                            <section class="col-md-6">                        
+                                <div class="form-group" ng-class="{ 'state-error' : myForm.txtRoomNumber.$invalid && !myForm.txtRoomNumber.$pristine, 'state-success': myForm.txtRoomNumber.$valid && !myForm.txtRoomNumber.$pristine}">
+                                    <label class="control-label" for="txtRoomNumber">Room</label>
+                                    <input type="text" id="txtRoomNumber" name="txtRoomNumber" class="form-control" placeholder="Room" ng-model="houseKeepingRequest.RoomNumber">
+                                </label>
+                            </section>
+                            <section class="col-md-6">
+                                <div class="form-group" ng-class="{ 'state-error' : myForm.txtCubicalNo.$invalid && !myForm.txtCubicalNo.$pristine, 'state-success': myForm.txtCubicalNo.$valid && !myForm.txtCubicalNo.$pristine}">
+                                    <label class="control-label" for="txtCubicalNo">Cubical</label>
+                                    <input name="txtCubicalNo" id="txtCubicalNo" class="form-control" ng-model="houseKeepingRequest.CubicalNo">
+                                    <i></i>
+                                </div>
+                            </section>
+                        </div>
+                    </section>                   
+                </div>
+                <div class="row">
+                    <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.phoneNumber.$invalid && !myForm.phoneNumber.$pristine, 'has-success': myForm.phoneNumber.$valid && !myForm.phoneNumber.$pristine}">
+                            <label for="phoneNumber" class="control-label">Home Phone <span class="text-danger">*</span> </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.phoneNumber.$error.required">Required!</span>
+                            <input type="tel" name="phoneNumber" readonly ng-model="contactHelpRequest.PrimaryPhoneNumber" class="form-control" required ui-mask="(999) 999-9999"/>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.OfficePhoneNumber.$invalid && !myForm.OfficePhoneNumber.$pristine, 'has-success': myForm.OfficePhoneNumber.$valid && !myForm.OfficePhoneNumber.$pristine}">
+                            <label class="control-label" for="OfficePhoneNumber">Office Phone <span class="text-danger">*</span> </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.OfficePhoneNumber.$error.required">Required!</span>
+                            <input type="tel" name="OfficePhoneNumber" readonly ng-model="contactHelpRequest.OfficePhoneNumber" class="form-control" required ui-mask="(999) 999-9999" />
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="row">
+                            <section class="col-xs-6">
+                                <div class="form-group"
+                                     ng-class="{ 'has-error' : myForm.txtPickupDate.$invalid && !myForm.txtPickupDate.$pristine, 'has-success': myForm.txtPickupDate.$valid && !myForm.txtPickupDate.$pristine}">
+                                    <label class="control-label" for="txtPickupDate">Pickup Date:</label>
+                                    <input type="text" name="txtPickupDate" required ng-model="govtVehicleRequest.Pickup_Date" id="txtPickupDate" placeholder="Pickup Date" class="form-control  datepicker" data-dateformat="dd/mm/yy">
+                                </div>
+                            </section>
+                            <section class="col-xs-6">
+                                <div class="form-group"
+                                     ng-class="{ 'has-error' : myForm.txtReturnDate.$invalid && !myForm.txtReturnDate.$pristine, 'has-success': myForm.txtReturnDate.$valid && !myForm.txtReturnDate.$pristine}">
+                                    <label class="control-label" for="txtReturnDate">Return Date:</label>
+                                    <!--<div class="input-group">-->
+                                    <input type="text" name="txtReturnDate" id="txtReturnDate" required ng-model="govtVehicleRequest.Return_Date" placeholder="Return Date" class="form-control  datepicker" data-dateformat="dd/mm/yy">
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-6">
+                        <label>
+                           Will you be taking this property outside of the country?
+                        </label>
+                        <div class="">
+                            <label class="radio radio-inline" ng-repeat="n in ['Yes','No']">
+                                <input type="radio" name="privatePermission" class="radiobox" ng-model="propertyPassRequest.changeCountry" ng-value="n">
+                                <span>{{n}}</span>
+                            </label>
+                        </div>
+                        <div class="form-group" ng-if="propertyPassRequest.changeCountry=='Yes'"
+                            ng-class="{ 'has-error' : myForm.txtCountry.$invalid && !myForm.txtCountry.$pristine, 'has-success': myForm.txtCountry.$valid && !myForm.txtCountry.$pristine}">
+                            <label>Where</label>
+                            <input type="text" name="txtCountry" ng-model="propertyPassRequest.CountryLeaving" class="form-control"  />
+                        </div>
+                    </section>
+                </div>                
+            </fieldset> 
+            <hr/>
+            <header>Properties</header>
+            <fieldset>
+                
+                <div class="row">
+                    <section class="col-md-2">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="propertyPassRequest.properties.laptop" ng-true-value="Yes" > Laptop
+                        </label>
+                    </section>
+                    <section class="col-md-2">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="propertyPassRequest.properties.projector" ng-true-value="Yes" > Projector
+                        </label>
+                    </section>
+                    <section class="col-md-3">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="propertyPassRequest.properties.ipad" ng-true-value="Yes" > iPad (for R&D use only)
+                        </label>
+                    </section>
+                    <section class="col-md-5">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="propertyPassRequest.properties.equipmentChecked" ng-true-value="Yes"  ng-false-value="no"> Field Equipment
+                        </label>
+                        <div class="col-xs-offset-1" ng-if="propertyPassRequest.properties.equipmentChecked=='Yes'">
+                            <label class="checkbox" ng-repeat="prod in equipmentFields">
+                                <input type="checkbox" checklist-value="prod" checklist-model="propertyPassRequest.properties.equipments" > {{prod}}
+                            </label>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="txtPropAccessories">
+                                Accessories
+                            </label>
+                            <textarea rows="2" name="txtPropAccessories" ng-model="propertyPassRequest.properties.Accessories" class="form-control"></textarea>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="txtPropSoftware">
+                                Software/Name
+                            </label>
+                            <textarea rows="2" name="tripDescription" ng-model="propertyPassRequest.properties.Software" class="form-control"></textarea>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="txtPropExtraComments">
+                                Additional comments
+                            </label>
+                            <textarea rows="4" name="txtExtraComments" ng-model="propertyPassRequest.properties.ExtraComments" class="form-control"></textarea>
+                        </div>
+                    </section>
+                </div>
+            </fieldset>          
+
+            </fieldset>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+                </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function init() {
+
+        Intranet.Util.Global.setDatepickerOptionsForStartEnd('txtPickupDate', 'txtReturnDate', 1);
+       
+
+    }
+
+    $(document).ready(function () {
+        init();
+    });
+</script>

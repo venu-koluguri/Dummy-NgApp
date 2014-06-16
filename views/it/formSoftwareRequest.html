@@ -1,0 +1,225 @@
+<div class="container">
+    <div class="">
+        <header>
+            <h2>Property Pass Request</h2>    
+        </header>
+
+        <form name="myForm" id="myForm" class="" novalidate role="form" ng-submit="submitForm(myForm.$valid)">
+            <header></header>
+            <fieldset>
+                <div class="row">
+                    <section class="col-md-8">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.drp_Requestor.$invalid && !myForm.drp_Requestor.$pristine, 'has-success': myForm.drp_Requestor.$valid && !myForm.drp_Requestor.$pristine}">
+                            <label for="drp_Requestor" class="control-label">Requester <span class="text-danger">*</span></label>
+                            <span class="label label-danger" ng-show="submitted && myForm.drp_Requestor.$error.required">Required!</span>
+                            <select name="drp_Requestor" 
+                                    ng-model="softwareRequest.RequestorInfo" id="drp_Requestor" ng-options="u.Name for u in allUsers" class="form-control" ng-change="softwareRequest.RequestorInfo=u">
+                                    <option value="0" selected="" disabled="">Name of Center Sponsor</option>
+                            </select>
+                        </div>
+                    </section>
+                           
+                </div>
+                <div class="row">
+                     <section class="col-md-8">
+                        <div class="form-group">
+                            <label class="control-label" for="txtComments">
+                                End users comments
+                            </label>
+                            <textarea rows="2" name="txtComments" ng-model="softwareRequest.comments" class="form-control" required></textarea>
+                            <p class="help-block">Please include the requestor if they are an end user</p>
+                        </div>
+                    </section>          
+                </div>
+                <div class="row">
+                    <section class="col-md-4">
+                        <div class="form-group">
+                            <label for="phoneNumber" class="control-label">Program Manager </label>
+                            <p class="form-control-static" >{{softwareRequest.RequestorInfo.ManagerName}}</p>
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="form-group">
+                            <label for="phoneNumber" class="control-label">Location of Requstor</label>
+                            <p class="form-control-static" >{{softwareRequest.RequestorInfo.Address}}</p>
+                        </div>
+                    </section>                    
+                </div>
+                <div class="row">
+                   <section class="col-md-8">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.drp_level.$invalid && !myForm.drp_level.$pristine, 'has-success': myForm.drp_level.$valid && !myForm.drp_level.$pristine}">
+                            <span class="label label-danger" ng-show="submitted && myForm.drp_level.$error.required">Required!</span>
+                            <select name="drp_level" 
+                                    ng-model="softwareRequest.Level" id="drp_level" ng-options=" u.value as u.Name for u in softwareLevels" required ng-change="resetSoftwares()">
+                            </select>
+                        </div>
+                    </section>
+                </div>                
+            </fieldset> 
+            <fieldset ng-if="softwareRequest.Level=='level2'">
+                <header>
+                    <h3>Existing Approved Software <small>(check appropriate boxes)</small></h3>
+                </header>
+                <div class="row">
+                    <section class="col-md-8">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.numLicenses.$invalid && !myForm.numLicenses.$pristine, 'has-success': myForm.numLicenses.$valid && !myForm.numLicenses.$pristine}">
+                            <label for="numLicenses" class="control-label">Number of licenses required </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.numLicenses.$error.required">Required!</span>
+                            <input type="number" name="numLicenses" readonly ng-model="contactHelpRequest.softwares.licenses" class="form-control" required>
+                            <p class="help-block">
+                                (number per software-for example if you need 5 licenses of ArcGis and 4 Google Earth you must fill out seperate forms ,if you need 5 for every selected sotware, enter 5.)
+                            </p>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-4" ng-repeat="soft in level2Softwares">
+                        <label class="checkbox" >
+                            <input type="checkbox" checklist-value="soft" checklist-model="softwareRequest.softwares.apps" > {{soft}}
+                        </label>
+                    </section>                    
+                </div>               
+            </fieldset>
+            <fieldset ng-if="softwareRequest.Level=='level3'">
+                <header>
+                    <h3>Level3 Speciality Products</h3>
+                </header>          
+                <div class="row">
+                    <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.softwareName.$invalid && !myForm.softwareName.$pristine, 'has-success': myForm.softwareName.$valid && !myForm.softwareName.$pristine}">
+                            <label for="softwareName" class="control-label">Name of software </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.softwareName.$error.required">Required!</span>
+                            <input type="text" name="softwareName" ng-model="softwareRequest.softwares.Name" class="form-control" required />
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.vendorName.$invalid && !myForm.vendorName.$pristine, 'has-success': myForm.vendorName.$valid && !myForm.vendorName.$pristine}">
+                            <label class="control-label" for="vendorName">Possible vendor</label>
+                            <span class="label label-danger" ng-show="submitted && myForm.vendorName.$error.required">Required!</span>
+                            <input type="text" name="vendorName" ng-model="softwareRequest.softwares.Vendor" class="form-control" required />
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.txtUrl.$invalid && !myForm.txtUrl.$pristine, 'has-success': myForm.txtUrl.$valid && !myForm.txtUrl.$pristine}">
+                            <label class="control-label" for="txtUrl">Url (if applicable)</label>
+                            <span class="label label-danger" ng-show="submitted && myForm.txtUrl.$error.required">Required!</span>
+                            <input type="url" name="txtUrl" ng-model="softwareRequest.softwares.Url" class="form-control" required />
+                        </div>
+                    </section>                   
+                </div>
+                <div class="row">
+                    <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.versionName.$invalid && !myForm.versionName.$pristine, 'has-success': myForm.versionName.$valid && !myForm.versionName.$pristine}">
+                            <label for="versionName" class="control-label">Version requested </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.versionName.$error.required">Required!</span>
+                            <input type="text" name="versionName" ng-model="softwareRequest.softwares.Version" class="form-control" required />
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.numLicenses.$invalid && !myForm.numLicenses.$pristine, 'has-success': myForm.numLicenses.$valid && !myForm.numLicenses.$pristine}">
+                            <label class="control-label" for="numLicenses">Total number of licenses </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.numLicenses.$error.required">Required!</span>
+                            <input type="number" name="numLicenses" ng-model="softwareRequest.softwares.licenses" class="form-control" required />
+                        </div>
+                    </section>
+                    <section class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.licenseCost.$invalid && !myForm.licenseCost.$pristine, 'has-success': myForm.licenseCost.$valid && !myForm.licenseCost.$pristine}">
+                            <label class="control-label" for="licenseCost">Cost per licences </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.licenseCost.$error.required">Required!</span>
+                            <input type="text" name="licenseCost" ng-model="softwareRequest.softwares.LicenseCost" class="form-control" required />
+                        </div>
+                    </section>                                       
+                </div>
+                <div class="row">
+                    <section class="col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.drp_program.$invalid && !myForm.drp_program.$pristine, 'has-success': myForm.drp_program.$valid && !myForm.drp_program.$pristine}">
+                            <label for="drp_program" class="control-label">Program </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.drp_program.$error.required">Required!</span>
+                            <select name="drp_program" 
+                                    ng-model="softwareRequest.softwares.Program" ng-options="p.ProgramName for p in Programs" class="form-control">
+                                    <option value="0" selected="" disabled="">Program Name</option>
+                            </select>
+                        </div>
+                    </section>
+                    <section class="col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.drp_project.$invalid && !myForm.drp_project.$pristine, 'has-success': myForm.drp_project.$valid && !myForm.drp_project.$pristine}">
+                            <label for="drp_project" class="control-label">Project</label>
+                            <span class="label label-danger" ng-show="submitted && myForm.drp_project.$error.required">Required!</span>
+                            <select name="drp_project" 
+                                    ng-model="softwareRequest.softwares.Project" ng-options="p.ProjectName for p in Projects" required class="form-control">
+                                    
+                            </select>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-12">
+                        <label>
+                           Does this application require maintainence after initial purchase?
+                        </label>
+                        <div class="">
+                            <label class="radio radio-inline" ng-repeat="n in ['Yes','No']">
+                                <input type="radio" name="maintainence" class="radiobox" ng-model="softwareRequest.softwares.maintainence" ng-value="n">
+                                <span>{{n}}</span>
+                            </label>
+                        </div>
+                        <div class="form-group" ng-if="softwareRequest.softwares.maintainence=='Yes'"
+                            ng-class="{ 'has-error' : myForm.txtCountry.$invalid && !myForm.txtCountry.$pristine, 'has-success': myForm.txtCountry.$valid && !myForm.txtCountry.$pristine}">
+                            <label>Appropriate cost per year(per license)</label>
+                            <input type="text" name="txtCountry" ng-model="softwareRequest.softwares.maintainenceCost" class="form-control"  />
+                        </div>
+                    </section>
+                </div>      
+            </fieldset>
+            <fieldset ng-if="softwareRequest.Level=='level4'">
+                <header>
+                    <h3>Freeware and Shareware</h3>
+                </header>
+                <div class="row">
+                    <section class="col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.softwareName.$invalid && !myForm.softwareName.$pristine, 'has-success': myForm.softwareName.$valid && !myForm.softwareName.$pristine}">
+                            <label for="softwareName" class="control-label">Name of requested software </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.softwareName.$error.required">Required!</span>
+                            <input type="text" name="softwareName" ng-model="softwareRequest.softwares.Name" class="form-control" required />
+                        </div>
+                    </section>
+                    <section class="col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.txtUrl.$invalid && !myForm.txtUrl.$pristine, 'has-success': myForm.txtUrl.$valid && !myForm.txtUrl.$pristine}">
+                            <label class="control-label" for="txtUrl">Please provide url</label>
+                            <span class="label label-danger" ng-show="submitted && myForm.txtUrl.$error.required">Required!</span>
+                            <input type="url" name="txtUrl" ng-model="softwareRequest.softwares.Url" class="form-control" required />
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-8">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.txtSoftComments.$invalid && !myForm.txtSoftComments.$pristine, 'has-success': myForm.txtSoftComments.$valid && !myForm.txtSoftComments.$pristine}">
+                            <label class="control-label" for="txtSoftComments">
+                                Other information/comments
+                            </label>
+                            <textarea rows="2" name="txtSoftComments" ng-model="softwareRequest.softwares.comments" class="form-control" required></textarea>
+                        </div>
+                    </section>
+                </div>
+            </fieldset>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+                </div>
+        </form>
+    </div>
+</div>

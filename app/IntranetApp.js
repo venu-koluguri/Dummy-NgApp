@@ -123,6 +123,20 @@
                     title: 'OCM Intranet | Facilities Home',
                     breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li><li>Facilities</li>'
                 })
+                .state('facilities-hourse-keeping', {
+                    url: '/facilities/houseKeeping',
+                    templateUrl: '/_layouts/15/Intranet/views/facilities/houseKeepingRequest.html',
+                    controller: 'houseKeepingRequest_Crtl',
+                    title: 'OCM Intranet | Facility & Housekeeping Problem/Assistance',
+                    breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li><li><a href="#/facilities/">Facilities</a<</li><li>Facility & Housekeeping</li>'
+                })
+                .state('facilities-govt-vehicle', {
+                    url: '/facilities/govtVehicle',
+                    templateUrl: '/_layouts/15/Intranet/views/facilities/govtVehicleRequest.html',
+                    controller: 'govtVehicleRequest_Crtl',
+                    title: 'OCM Intranet | FGovt Vehicle Request',
+                    breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li><li><a href="#/facilities/">Facilities</a<</li><li>Govt Vehicle Request</li>'
+                })
                 //-----------------Admin Section----------------------------------------------
                 .state('adminIndex', {
                     url: '/admin/',
@@ -236,12 +250,68 @@
                     title: 'OCM Intranet | Communications Home',
                     breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li><li>Communications Home</li>'
                 })
+                .state('comm-form-report', {
+                    url: '/communications/form-report',
+                    templateUrl: '/_layouts/15/Intranet/views/communications/formOneReport.html',
+                    controller: 'formOneReport_Crtl',
+                    title: 'OCM Intranet | Submit One Report',
+                    breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li><li>Communications Home</li><li>Submit One Report</li>'
+                })
+                .state('comm-form-story', {
+                    url: '/communications/form-story',
+                    templateUrl: '/_layouts/15/Intranet/views/communications/formStoryIdea.html',
+                    controller: 'formStoryIdea_Crtl',
+                    title: 'OCM Intranet | Story Idea Submission',
+                    breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li><li>Communications Home</li><li>Story Idea Submission</li>'
+                })
                  //-----------------IT Section----------------------------------------------
                 .state('itIndex', {
                     url: '/it/',
                     templateUrl: '/_layouts/15/Intranet/views/it/index.min.html',
                     title: 'OCM Intranet | I.T. and Property',
                     breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li><li>I.T. and Property Home</li>'
+                })
+                .state('it-form-contact', {
+                    url: '/it/form/contact-help',
+                    templateUrl: '/_layouts/15/Intranet/views/it/formContactHelp.html',
+                    controller: 'formContactHelp_Crtl',
+                    title: 'OCM Intranet | Contact help desk',
+                    breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li><li><a href="#/it/">I.T. and Property Home</a></li><li>Contact help desk</li>'
+                })
+                .state('it-form-demo', {
+                    url: '/it/form/demo',
+                    templateUrl: '/_layouts/15/Intranet/views/it/formDemoNotofication.html',
+                    controller: 'formDemoNotofication_Crtl',
+                    title: 'OCM Intranet | I.T. and Property',
+                    breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li><li><a href="#/it/">I.T. and Property Home</a></li><li></li>'
+                })
+                .state('it-form-software', {
+                    url: '/it/form/software',
+                    templateUrl: '/_layouts/15/Intranet/views/it/formSoftwareRequest.html',
+                    controller: 'formSoftwareRequest_Crtl',
+                    title: 'OCM Intranet | I.T. and Property',
+                    breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li<li><a href="#/it/">I.T. and Property Home</a></li><li></li>'
+                })
+                .state('it-property-pass', {
+                    url: '/it/property/pass',
+                    templateUrl: '/_layouts/15/Intranet/views/it/propertyPassRequest.html',
+                    controller: 'propertyPassRequest_Crtl',
+                    title: 'OCM Intranet | Property Pass Request',
+                    breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li<li><a href="#/it/">I.T. and Property Home</a></li><li></li>'
+                })
+                .state('it-property-asset-create', {
+                    url: '/it/property/asset-create',
+                    templateUrl: '/_layouts/15/Intranet/views/it/propertyCreateAsset.html',
+                    controller: 'propertyCreateAsset_Crtl',
+                    title: 'OCM Intranet | Create new asset',
+                    breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li<li><a href="#/it/">I.T. and Property Home</a></li><li></li>'
+                })
+                .state('it-property-asset-list', {
+                    url: '/it/property/asset-list',
+                    templateUrl: '/_layouts/15/Intranet/views/it/propertyListAsset.html',
+                    controller: 'propertyListAsset_Crtl',
+                    title: 'OCM Intranet | Maintain asset status',
+                    breadcrumb: '<li><i class="fa fa-home fa-lg">&nbsp;</i><a href="#/home/">Intranet</a></li<li><a href="#/it/">I.T. and Property Home</a></li><li></li>'
                 })
                  //-----------------grants Section----------------------------------------------
                 .state('grantsIndex', {
@@ -694,6 +764,99 @@ Intranet.Util.Global = (function () {
                     }();
                 }
             };
+        }])
+        .directive('checklistModel', ['$parse', '$compile', function($parse, $compile) {
+              // contains
+              function contains(arr, item) {
+                if (angular.isArray(arr)) {
+                  for (var i = 0; i < arr.length; i++) {
+                    if (angular.equals(arr[i], item)) {
+                      return true;
+                    }
+                  }
+                }
+                return false;
+              }
+
+              // add
+              function add(arr, item) {
+                arr = angular.isArray(arr) ? arr : [];
+                for (var i = 0; i < arr.length; i++) {
+                  if (angular.equals(arr[i], item)) {
+                    return arr;
+                  }
+                }    
+                arr.push(item);
+                return arr;
+              }  
+
+              // remove
+              function remove(arr, item) {
+                if (angular.isArray(arr)) {
+                  for (var i = 0; i < arr.length; i++) {
+                    if (angular.equals(arr[i], item)) {
+                      arr.splice(i, 1);
+                      break;
+                    }
+                  }
+                }
+                return arr;
+              }
+
+              // http://stackoverflow.com/a/19228302/1458162
+              function postLinkFn(scope, elem, attrs) {
+                // compile with `ng-model` pointing to `checked`
+                $compile(elem)(scope);
+
+                // getter / setter for original model
+                var getter = $parse(attrs.checklistModel);
+                var setter = getter.assign;
+
+                // value added to list
+                var value = $parse(attrs.checklistValue)(scope.$parent);
+
+                // watch UI checked change
+                scope.$watch('checked', function(newValue, oldValue) {
+                  if (newValue === oldValue) { 
+                    return;
+                  } 
+                  var current = getter(scope.$parent);
+                  if (newValue === true) {
+                    setter(scope.$parent, add(current, value));
+                  } else {
+                    setter(scope.$parent, remove(current, value));
+                  }
+                });
+
+                // watch original model change
+                scope.$parent.$watch(attrs.checklistModel, function(newArr, oldArr) {
+                  scope.checked = contains(newArr, value);
+                }, true);
+              }
+
+              return {
+                restrict: 'A',
+                priority: 1000,
+                terminal: true,
+                scope: true,
+                compile: function(tElement, tAttrs) {
+                  if (tElement[0].tagName !== 'INPUT' || !tElement.attr('type', 'checkbox')) {
+                    throw 'checklist-model should be applied to `input[type="checkbox"]`.';
+                  }
+
+                  if (!tAttrs.checklistValue) {
+                    throw 'You should provide `checklist-value`.';
+                  }
+
+                  // exclude recursion
+                  tElement.removeAttr('checklist-model');
+                  
+                  // local scope var storing individual checkbox model
+                  tElement.attr('ng-model', 'checked');
+
+                  return postLinkFn;
+                }
+              };
         }]);
 })();
 ///#source 1 1 C:\Intranet\Layouts\Intranet\app\filters.js
@@ -3445,4 +3608,570 @@ Intranet.Util.Global = (function () {
         }]);
 })();
 
+///#source 1 1 C:\Intranet\Layouts\Intranet\app\communications\oneReportSubmission_Crtl.js
+/// <reference path="../js/angular.min.js" />
+(function () {
+    'use strict';
+
+    Intranet.Util.Global.Admin
+        .controller('formOneReport_Crtl', ['$scope', 'DataContext', function ($scope, DataContext) {
+            $scope.submitted = false;
+            $scope.oneReportRequest = {};
+
+            Init();
+
+            function Init() {
+
+               
+
+            };
+
+            $scope.submitForm = function (isValid) {
+                if (isValid) {
+                    var configData = {
+                        method: 'POST',
+                        url: Intranet.Util.Global.serviceURL() + 'CommunicationReportSubmit',
+                        data: angular.toJson($scope.oneReportRequest),
+                        headers: { 'Content-Type': 'application/json; charset=utf-8', 'dataType': 'json' }
+                    };
+                    //DataContext.post(configData, 'Name Change form request have submitted.', 'Request Failed');
+                    DataContext.post(configData)
+                        .then(function (data) {
+                            DataContext.successTimeOut('communication report request have submitted.');
+                        });
+                }
+                else {
+                    toastr.error("Please enter all required fields ", "ERROR!!");
+                }
+            };
+
+            $scope.goBack = function () {
+                DataContext.redirectTo('/communications/');
+            };
+        }]);
+})();
+
+///#source 1 1 C:\Intranet\Layouts\Intranet\app\communications\formStoryIdea_Crtl.js
+/// <reference path="../js/angular.min.js" />
+(function () {
+    'use strict';
+
+    Intranet.Util.Global.Admin
+        .controller('formStoryIdea_Crtl', ['$scope', 'DataContext', function ($scope, DataContext) {
+            $scope.submitted = false;
+            $scope.storyIdeaRequest = {};
+
+            Init();
+
+            function Init() {
+
+               
+
+            };
+
+            $scope.submitForm = function (isValid) {
+                if (isValid) {
+                    var configData = {
+                        method: 'POST',
+                        url: Intranet.Util.Global.serviceURL() + 'CommunicationReportSubmit',
+                        data: angular.toJson($scope.storyIdeaRequest),
+                        headers: { 'Content-Type': 'application/json; charset=utf-8', 'dataType': 'json' }
+                    };
+                    //DataContext.post(configData, 'Name Change form request have submitted.', 'Request Failed');
+                    DataContext.post(configData)
+                        .then(function (data) {
+                            DataContext.successTimeOut('communication story idea request have submitted.');
+                        });
+                }
+                else {
+                    toastr.error("Please enter all required fields ", "ERROR!!");
+                }
+            };
+
+            $scope.goBack = function () {
+                DataContext.redirectTo('/communications/');
+            };
+        }]);
+})();
+
+///#source 1 1 C:\Intranet\Layouts\Intranet\app\communications\houseKeepingRequest.js
+/// <reference path="../js/angular.min.js" />
+(function () {
+    'use strict';
+
+    Intranet.Util.Global.Admin
+        .controller('houseKeepingRequest_Crtl', ['$scope', 'DataContext', function ($scope, DataContext) {
+            $scope.submitted = false;
+            $scope.houseKeepingRequest = {};
+            $scope.empLocation = {};
+            Init();
+
+            function Init() {
+
+                DataContext.currentUserInfo()
+                    .then(function (dataUserInfo) {
+                        $scope.currentUser = dataUserInfo;
+                    })
+                    .then(function () {
+                        $scope.houseKeepingRequest = angular.copy($scope.currentUser);
+                    });
+                DataContext.officePicker().then(function (dataOfficePicker) {
+                    $scope.empLocation = dataOfficePicker.OfficeBuildings;
+
+                });
+
+            };
+
+            $scope.submitForm = function (isValid) {
+                if (isValid) {
+                    var configData = {
+                        method: 'POST',
+                        url: Intranet.Util.Global.serviceURL() + 'HouseKeepingRequest',
+                        data: angular.toJson($scope.houseKeepingRequest),
+                        headers: { 'Content-Type': 'application/json; charset=utf-8', 'dataType': 'json' }
+                    };
+                    //DataContext.post(configData, 'Name Change form request have submitted.', 'Request Failed');
+                    DataContext.post(configData)
+                        .then(function (data) {
+                            DataContext.successTimeOut('Housekeeping Problem/Assistance form request have submitted.');
+                        });
+                }
+                else {
+                    toastr.error("Please enter all required fields ", "ERROR!!");
+                }
+            };
+
+            $scope.goBack = function () {
+                DataContext.redirectTo('/facilities/');
+            };
+        }]);
+})();
+
+///#source 1 1 C:\Intranet\Layouts\Intranet\app\communications\GovtVehicleRequest_Crtl.js
+/// <reference path="../js/angular.min.js" />
+(function () {
+    'use strict';
+
+    Intranet.Util.Global.Admin
+        .controller('govtVehicleRequest_Crtl', ['$scope', 'DataContext', function ($scope, DataContext) {
+            $scope.submitted = false;
+            $scope.timeModels = Intranet.Util.Global.timeDropDown;
+            $scope.govtVehicleRequest = {};
+            Init();
+
+            function Init() {
+
+                DataContext.currentUserInfo()
+                    .then(function (dataUserInfo) {
+                        $scope.currentUser = dataUserInfo;
+                    })
+                    .then(function () {
+                        $scope.govtVehicleRequest = angular.copy($scope.currentUser);
+                    });
+               
+
+            };
+
+            $scope.submitForm = function (isValid) {
+                if (isValid) {
+                    $scope.submitted = true;
+                    var configData = {
+                        method: 'POST',
+                        url: Intranet.Util.Global.serviceURL() + 'GovtVehicleRequest',
+                        data: angular.toJson($scope.govtVehicleRequest),
+                        headers: { 'Content-Type': 'application/json; charset=utf-8', 'dataType': 'json' }
+                    };
+                    //DataContext.post(configData, 'Name Change form request have submitted.', 'Request Failed');
+                    DataContext.post(configData)
+                        .then(function (data) {
+                            DataContext.successTimeOut('HGovet Vehicle form request have submitted.');
+                        });
+                }
+                else {
+                    toastr.error("Please enter all required fields ", "ERROR!!");
+                }
+            };
+
+            $scope.goBack = function () {
+                DataContext.redirectTo('/facilities/');
+            };
+        }]);
+})();
+
+///#source 1 1 C:\Intranet\Layouts\Intranet\app\it\formDemoNotofication_Crtl.js
+/// <reference path="../js/angular.min.js" />
+(function () {
+    'use strict';
+
+    Intranet.Util.Global.Admin
+        .controller('formDemoNotofication_Crtl', ['$scope', 'DataContext', function ($scope, DataContext) {
+            $scope.submitted = false;
+            $scope.timeModels = Intranet.Util.Global.timeDropDown;
+            $scope.demoNotifyRequest = {};
+            Init();
+
+            function Init() {
+
+                DataContext.allUsers()
+                    .then(function (dataUsers) { $scope.allUsers = dataUsers; })
+
+                //add service request for location
+                $scope.Locations = [];
+                    
+            };
+
+            $scope.submitForm = function (isValid) {
+                if (isValid) {
+                    $scope.submitted = true;
+                    var configData = {
+                        method: 'POST',
+                        url: Intranet.Util.Global.serviceURL() + 'DemoNotificationRequest',
+                        data: angular.toJson($scope.demoNotifyRequest),
+                        headers: { 'Content-Type': 'application/json; charset=utf-8', 'dataType': 'json' }
+                    };
+                    DataContext.post(configData)
+                        .then(function (data) {
+                            DataContext.successTimeOut('Demo Notification form request have submitted.');
+                        });
+                }
+                else {
+                    toastr.error("Please enter all required fields ", "ERROR!!");
+                }
+            };
+
+            $scope.goBack = function () {
+                DataContext.redirectTo('/it/');
+            };
+        }]);
+})();
+
+///#source 1 1 C:\Intranet\Layouts\Intranet\app\it\formContactHelp_Crtl.js
+/// <reference path="../js/angular.min.js" />
+(function () {
+    'use strict';
+
+    Intranet.Util.Global.Admin
+        .controller('formContactHelp_Crtl', ['$scope', 'DataContext', function ($scope, DataContext) {
+            $scope.submitted = false;
+            $scope.contactHelpRequest = {};
+            Init();
+
+            function Init() {
+
+                DataContext.currentUserInfo()
+                    .then(function (dataUserInfo) {
+                        $scope.currentUser = dataUserInfo;
+                    })
+                    .then(function () {
+                        $scope.contactHelpRequest = angular.copy($scope.currentUser);
+                    });
+               
+
+            };
+
+            $scope.submitForm = function (isValid) {
+                if (isValid) {
+                    $scope.submitted = true;
+                    var configData = {
+                        method: 'POST',
+                        url: Intranet.Util.Global.serviceURL() + 'ItContactHelpRequest',
+                        data: angular.toJson($scope.contactHelpRequest),
+                        headers: { 'Content-Type': 'application/json; charset=utf-8', 'dataType': 'json' }
+                    };
+                    //DataContext.post(configData, 'Name Change form request have submitted.', 'Request Failed');
+                    DataContext.post(configData)
+                        .then(function (data) {
+                            DataContext.successTimeOut('Contact help form request have submitted.');
+                        });
+                }
+                else {
+                    toastr.error("Please enter all required fields ", "ERROR!!");
+                }
+            };
+
+            $scope.goBack = function () {
+                DataContext.redirectTo('/it/');
+            };
+        }]);
+})();
+
+///#source 1 1 C:\Intranet\Layouts\Intranet\app\it\formSoftwareRequest_Crtl.js
+/// <reference path="../js/angular.min.js" />
+(function () {
+    'use strict';
+
+    Intranet.Util.Global.Admin
+        .controller('formSoftwareRequest_Crtl', ['$scope', 'DataContext', function ($scope, DataContext) {
+            $scope.submitted = false;
+            $scope.softwareRequest = {
+                'softwares':{
+                    'apps':[]
+                },
+                'Level':"level2"
+            };
+            $scope.level2Apps = [];
+            $scope.level2Softwares = [
+                "Adobe Photoshop",
+                "Adobe Dreamweaver",
+                "Adobe Illustrator",
+                "ArcGIS",
+                "Google Earth",
+                "Ultra-Edit",
+                "Exceed",
+                "Microsoft Visio Pro (terminal services)",
+                "Microsoft Project Pro (terminal services)",
+                "Adobe Products",
+                "Global Mapper",
+                "Password Safe",
+                "ERDAS Imagine",
+                "Filezilla",
+                "Microsoft Visual Studio",
+                "SQL Server Management Studio",
+                "PuTTY",
+                "SnagIt",
+                "Tomcat",
+                "Subversion",
+                "Tortoise SVN",
+                "Visual SVN"
+            ];
+            $scope.softwareLevels = [
+                {"Name":"Level 2: Existing,approved Software","value":"level2"},
+                {"Name":"Level 3: specify Products","value":"level3"},
+                {"Name":"Level 4: Freeware and Shareware","value":"level4"}
+            ];
+            Init();
+
+            function Init() {
+
+                DataContext.allUsers()
+                    .then(function (dataUsers) { $scope.allUsers = dataUsers; })
+                    .then(function () {
+                        var index;
+                        if ($scope.allUsers != null && $scope.currentUser != null) {
+
+                            for (var i = 0; i < $scope.allUsers.length; i++) {
+                                if ($scope.allUsers[i].Email == $scope.currentUser.Email) {
+                                    index = i;
+                                    break;
+                                }
+                            }
+
+                            if (index > 0) {
+                                $scope.softwareRequest.RequestorInfo = $scope.allUsers[index];
+                            }
+                        }
+                    });
+               
+                DataContext.empPicker().then(function (dataEmpPicker) {
+                    $scope.Affiliations = dataEmpPicker.Affiliations;
+                    $scope.LineOffices = dataEmpPicker.LineOffices;
+                    $scope.Programs = dataEmpPicker.Programs;
+                    $scope.Projects = dataEmpPicker.Projects;
+                });
+            };
+
+            $scope.resetSoftwares = function(){
+                $scope.softwareRequest.softwares = {'apps':[]};
+            }
+
+            $scope.submitForm = function (isValid) {
+                if (isValid) {
+                    $scope.submitted = true;
+                    var configData = {
+                        method: 'POST',
+                        url: Intranet.Util.Global.serviceURL() + 'ItSoftwareRequest',
+                        data: angular.toJson($scope.softwareRequest),
+                        headers: { 'Content-Type': 'application/json; charset=utf-8', 'dataType': 'json' }
+                    };
+                    //DataContext.post(configData, 'Name Change form request have submitted.', 'Request Failed');
+                    DataContext.post(configData)
+                        .then(function (data) {
+                            DataContext.successTimeOut('software form request have submitted.');
+                        });
+                }
+                else {
+                    toastr.error("Please enter all required fields ", "ERROR!!");
+                }
+            };
+
+            $scope.goBack = function () {
+                DataContext.redirectTo('/it/');
+            };
+        }]);
+})();
+
+///#source 1 1 C:\Intranet\Layouts\Intranet\app\it\propertyPassRequest_Crtl.js
+/// <reference path="../js/angular.min.js" />
+(function () {
+    'use strict';
+
+    Intranet.Util.Global.Admin
+        .controller('propertyPassRequest_Crtl', ['$scope', 'DataContext', function ($scope, DataContext) {
+            $scope.submitted = false;
+            $scope.propertyPassRequest = {};
+            $scope.equipmentFields = [
+                "Keypad Polling System",
+                "Mapping Grade GPS Receiver",
+                "Survey Grade GPS Receiver",
+                "Ruggedized PC",
+                "Handheld Video Camera",
+                "Underwater Video System",
+                "Digital Camera",
+                "Binoculars",
+                "Acoustic Sensor"
+            ];
+            Init();
+
+            function Init() {
+
+                DataContext.currentUserInfo()
+                    .then(function (dataUserInfo) {
+                        $scope.currentUser = dataUserInfo;
+                    })
+                    .then(function () {
+                        $scope.propertyPassRequest = angular.copy($scope.currentUser);
+                        $scope.propertyPassRequest.properties = {}
+                        $scope.propertyPassRequest.properties.equipments = [];
+                    });
+               
+
+            };
+
+            $scope.submitForm = function (isValid) {
+                console.log($scope.propertyPassRequest)
+                if (isValid) {
+                    $scope.submitted = true;
+                    var configData = {
+                        method: 'POST',
+                        url: Intranet.Util.Global.serviceURL() + 'PropertyPassRequest',
+                        data: angular.toJson($scope.propertyPassRequest),
+                        headers: { 'Content-Type': 'application/json; charset=utf-8', 'dataType': 'json' }
+                    };
+                    //DataContext.post(configData, 'Name Change form request have submitted.', 'Request Failed');
+                    DataContext.post(configData)
+                        .then(function (data) {
+                            DataContext.successTimeOut('Property pass form request have submitted.');
+                        });
+                }
+                else {
+                    toastr.error("Please enter all required fields ", "ERROR!!");
+                }
+            };
+
+            $scope.goBack = function () {
+                DataContext.redirectTo('/it/');
+            };
+        }]);
+})();
+
+///#source 1 1 C:\Intranet\Layouts\Intranet\app\it\propertyCreateAsset_Crtl.js
+/// <reference path="../js/angular.min.js" />
+(function () {
+    'use strict';
+
+    Intranet.Util.Global.Admin
+        .controller('propertyCreateAsset_Crtl', ['$scope', 'DataContext', function ($scope, DataContext) {
+            $scope.submitted = false;
+            $scope.createAssetRequest = {};
+           
+            Init();
+
+            function Init() {
+                DataContext.allUsers()
+                    .then(function (dataUsers) { $scope.allUsers = dataUsers; })
+                // add service request for cust area here
+                $scope.custArea = [];
+                //add service request for location
+                $scope.Locations = [];
+
+            };
+
+            $scope.submitForm = function (isValid) {
+                 $scope.submitted = true;
+                if (isValid) {                   
+                    var configData = {
+                        method: 'POST',
+                        url: Intranet.Util.Global.serviceURL() + 'PropertyCreateAsset',
+                        data: angular.toJson($scope.createAssetRequest),
+                        headers: { 'Content-Type': 'application/json; charset=utf-8', 'dataType': 'json' }
+                    };
+                    //DataContext.post(configData, 'Name Change form request have submitted.', 'Request Failed');
+                    DataContext.post(configData)
+                        .then(function (data) {
+                            DataContext.successTimeOut('Asset Create form request have submitted.');
+                        });
+                }
+                else {
+                    toastr.error("Please enter all required fields ", "ERROR!!");
+                }
+            };
+
+            $scope.goBack = function () {
+                DataContext.redirectTo('/it/');
+            };
+        }]);
+})();
+///#source 1 1 C:\Intranet\Layouts\Intranet\app\it\propertyPassRequest_Crtl.js
+/// <reference path="../js/angular.min.js" />
+(function () {
+    'use strict';
+
+    Intranet.Util.Global.Admin
+        .controller('propertyListAsset_Crtl', ['$scope', 'DataContext', function ($scope, DataContext) {
+            $scope.submitted = false;
+            $scope.editAssetRequest = {};
+            $scope.showForm = false;
+            Init();
+
+            function Init() {
+                DataContext.allUsers()
+                    .then(function (dataUsers) { $scope.allUsers = dataUsers; })
+
+                //add service request for list assets 
+                $scope.allAssets = [
+                    {"Barcode":123,"Manufacture":"intra","ModelNumber":4546546,"SerialNumber":12345,"Status":"active"},
+                    {"Barcode":989,"Manufacture":"intra","ModelNumber":6547657,"SerialNumber":12346,"Status":"active"}
+                ];
+                // add service request for cust area here
+                $scope.custArea = [];
+                //add service request for location
+                $scope.Locations = [];
+
+            };
+
+            $scope.editAsset = function(asset){
+                $scope.editAssetRequest = asset;
+                $scope.showForm = true;
+            }
+
+            $scope.hideForm= function(){
+                $scope.editAssetRequest = {};
+                $scope.showForm = false;
+            }
+            $scope.submitForm = function (isValid) {
+                 $scope.submitted = true;
+                if (isValid) {                   
+                    var configData = {
+                        method: 'POST',
+                        url: Intranet.Util.Global.serviceURL() + 'PropertyEditAsset',
+                        data: angular.toJson($scope.editAssetRequest),
+                        headers: { 'Content-Type': 'application/json; charset=utf-8', 'dataType': 'json' }
+                    };
+                    //DataContext.post(configData, 'Name Change form request have submitted.', 'Request Failed');
+                    DataContext.post(configData)
+                        .then(function (data) {
+                            DataContext.successTimeOut('Asset edit form request have submitted.');
+                            $scope.hideForm();                            
+                        });
+                }
+                else {
+                    toastr.error("Please enter all required fields ", "ERROR!!");
+                }
+            };
+
+            $scope.goBack = function () {
+                DataContext.redirectTo('/it/');
+            };
+        }]);
+})();
 

@@ -1,0 +1,196 @@
+<div class="container">
+    <div class="jarviswidget">
+        <div>
+            <div class="widget-body no-padding">
+                <header>
+                    <h3 class="text-center">Create new asset</h3>    
+                </header>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Barcode</th>
+                            <th>Manufacture</th>
+                            <th>Model Number</th>
+                            <th>Serial Number</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="asset in allAssets">
+                            <td>{{asset.Barcode}}</td>
+                            <td>{{asset.Manufacture}}</td>
+                            <td>{{asset.ModelNumber}}</td>
+                            <td>{{asset.SerialNumber}}</td>
+                            <td>{{asset.Status}}</td>
+                            <td><button class="btn btn-info"  ng-click="editAsset(asset)"><i class="fa fa-edit"></i> Edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr/>
+                <form name="myForm" id="myForm" class="smart-form" ng-show ="showForm" novalidate role="form" ng-submit="submitForm(myForm.$valid)">
+                    <header></header>
+                    <fieldset>
+                        <div class="row">
+                            <section class="col col-6">
+                                <label class="control-label" for="txtBarcode">Barcode:</label>
+                                <label class="input"
+                                     ng-class="{ 'state-error' : myForm.txtBarcode.$invalid && !myForm.txtBarcode.$pristine, 'state-success': myForm.txtBarcode.$valid && !myForm.txtBarcode.$pristine}">                            
+                                    <input type="text" name="txtBarcode" ng-model="editAssetRequest.Barcode" required />
+                                     <span class="bg-danger" ng-show="submitted && myForm.txtBarcode.$error.required">Required!</span>
+                                </label>
+                            </section>
+                            <section class="col col-6">
+                                <label class="control-label" for="txtCancelDate">Status:</label>
+                                <label class="select"
+                                        ng-class="{ 'state-error' : myForm.drpStatus.$invalid && !myForm.drpStatus.$pristine, 'state-success': myForm.drpStatus.$valid && !myForm.drpStatus.$pristine}">                                   
+                                    <select name="drpStatus" required ng-model="editAssetRequest.Status" >
+                                        <option value="active">Active</option>
+                                        <option value="storage">Storage</option>
+                                        <option value="excess">Excess</option>
+                                    </select>
+                                    <i></i>
+                                </label>
+                            </section>             
+                        </div>
+                        <div class="row">
+                            <section class="col col-10">
+                                <label for="txtDescription" class="control-label">Description:</label>
+                                <label class="textarea" 
+                                        ng-class="{ 'state-error' : myForm.txtDescription.$invalid && !myForm.txtDescription.$pristine, 'state-success': myForm.txtDescription.$valid && !myForm.txtDescription.$pristine}">
+                                    <textarea rows="4" cols="50" name="txtDescription" required ng-model="editAssetRequest.Description"></textarea>
+                                </label>
+                            </section>
+                        </div>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="control-label" for="txtManufacture">Manufacture:</label>
+                                <label class="input"
+                                     ng-class="{ 'state-error' : myForm.txtManufacture.$invalid && !myForm.txtManufacture.$pristine, 'state-success': myForm.txtManufacture.$valid && !myForm.txtManufacture.$pristine}">                           
+                                    <input type="text" name="txtManufacture" ng-model="editAssetRequest.Manufacture" required />
+                                     <span class="bg-danger" ng-show="submitted && myForm.txtManufacture.$error.required">Required!</span>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="control-label" for="txtModelNum">Model Number:</label>
+                                <label class="input"
+                                     ng-class="{ 'state-error' : myForm.txtModelNum.$invalid && !myForm.txtModelNum.$pristine, 'state-success': myForm.txtModelNum.$valid && !myForm.txtModelNum.$pristine}">                            
+                                    <input type="text" name="txtModelNum" ng-model="editAssetRequest.ModelNumber" required />
+                                     <span class="bg-danger" ng-show="submitted && myForm.txtModelNum.$error.required">Required!</span>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="control-label" for="txtSerialNum">Serial Number:</label>
+                                <label class="input"
+                                     ng-class="{ 'state-error' : myForm.txtSerialNum.$invalid && !myForm.txtSerialNum.$pristine, 'state-success': myForm.txtSerialNum.$valid && !myForm.txtSerialNum.$pristine}">                            
+                                    <input type="text" name="txtSerialNum" ng-model="editAssetRequest.SerialNumber" required />
+                                     <span class="bg-danger" ng-show="submitted && myForm.txtSerialNum.$error.required">Required!</span>
+                                </label>
+                            </section>       
+                        </div>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="control-label" for="drpCustArea">Customer Area:</label>
+                                <label class="select"
+                                        ng-class="{ 'state-error' : myForm.drpCustArea.$invalid && !myForm.drpCustArea.$pristine, 'state-success': myForm.drpCustArea.$valid && !myForm.drpCustArea.$pristine}">                             
+                                    <select name="drpCustArea" required ng-model="editAssetRequest.CustArea" ng-options="Area.Name for area in custArea" ng-change="selectedArea=Area"></select>
+                                    <i></i>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="control-label" for="txtCustodian">Property Custodian:</label>
+                                <label class="input">                            
+                                    <input type="text" name="txtCustodian" readonly="" ng-model="selectedArea.Custodian" />
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="control-label" for="txtContact">Property Contact:</label>
+                                <label class="input">                            
+                                    <input type="text" name="txtContact" readonly="" ng-model="selectedArea.Contact" />
+                                </label>
+                            </section>       
+                        </div>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="control-label" for="drpCurrentUser">Current User:</label>
+                                <label class="select"
+                                        ng-class="{ 'state-error' : myForm.drpCurrentUser.$invalid && !myForm.drpCurrentUser.$pristine, 'state-success': myForm.drpCurrentUser.$valid && !myForm.drpCurrentUser.$pristine}">                 
+                                    <select name="drpCurrentUser" required ng-model="editAssetRequest.CurrentUser" ng-options="User.Name for User in allUsers"></select>
+                                    <i></i>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="control-label" for="txtReceivedDate">Date Received:</label>
+                                <label class="input">                            
+                                    <input type="text" name="txtReceivedDate" class="datepicker" data-dateformat="dd/mm/yy" ng-model="editAssetRequest.ReceivedDate" />
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="control-label" for="txtAcquisitionDate">Acquisition Date:</label>
+                                <label class="input">                            
+                                    <input type="text" name="txtAcquisitionDate" class="datepicker" data-dateformat="dd/mm/yy" ng-model="editAssetRequest.AcquisitionDate" />
+                                </label>
+                            </section>       
+                        </div>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="control-label" for="drpLocation">Location:</label>
+                                <label class="select"
+                                        ng-class="{ 'state-error' : myForm.drpLocation.$invalid && !myForm.drpLocation.$pristine, 'state-success': myForm.drpLocation.$valid && !myForm.drpLocation.$pristine}">                 
+                                    <select name="drpLocation" required ng-model="editAssetRequest.Location" ng-options="Loc.Name for Loc in Locations"></select>
+                                    <i></i>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label for="Start_Time">Room:</label>
+                                <label class="select"
+                                        ng-class="{ 'state-error' : myForm.drpRoom.$invalid && !myForm.drpRoom.$pristine, 'state-success': myForm.drpRoom.$valid && !myForm.drpRoom.$pristine}">                                    
+                                    <select name="drpRoom" required ng-model="editAssetRequest.Room" ng-options="R.name for R in Rooms"></select>
+                                    <i></i>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label for="Start_Time">Address:</label>
+                                <label class="input"
+                                     ng-class="{ 'state-error' : myForm.txtAddress.$invalid && !myForm.txtAddress.$pristine, 'state-success': myForm.txtAddress.$valid && !myForm.txtAddress.$pristine}">                            
+                                    <input type="text" name="txtAddress" ng-model="editAssetRequest.Address" required />
+                                     <span class="bg-danger" ng-show="submitted && myForm.txtAddress.$error.required">Required!</span>
+                                </label>
+                            </section>                   
+                        </div>
+                        <div class="row">
+                            <section class="col col-10">
+                                <label for="txtComments" class="control-label">Comments</label>
+                                <label class="textarea" 
+                                        ng-class="{ 'state-error' : myForm.txtComments.$invalid && !myForm.txtComments.$pristine, 'state-success': myForm.txtComments.$valid && !myForm.txtContactinfo.$pristine}">
+                                    <textarea rows="4" cols="50" name="txtComments" required ng-model="editAssetRequest.Comments">                   
+                                    </textarea>
+                                </label>
+                            </section>
+                        </div>
+                        <div class="row">
+                            <section class="col col-10">
+                                <label for="txtAttachments" class="control-label">Attachments</label>
+                                <label class="textarea" >
+                                   
+                                </label>
+                            </section>
+                        </div>       
+                    </fieldset> 
+                    <footer>
+                        <div class="pull-right">
+                             <button type="button" class="btn btn-danger" ng-click="hideForm();"><i class="fa fa-unlink fa-lg">&nbsp;</i>Cancel</button>
+                            <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+                        </div>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+
+</script>

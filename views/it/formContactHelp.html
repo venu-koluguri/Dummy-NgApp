@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="">
+        <header>
+            <h3>Contact help desk (outside of the NCO network)</h3>    
+        </header>
+
+        <p>
+            <b>NOTE:</b> This form is for use by off-site staff or those on travel only. Staff in Charleston or SSMC should use Track-It! for all computer and phone related requests. If you need immediate assistance please call the Charleston Help Desk at 843-740-1339.
+        </p>
+
+        <form name="myForm" id="myForm" class="" novalidate role="form" ng-submit="submitForm(myForm.$valid)">
+            <header></header>
+            <fieldset>
+                <div class="row">
+                    <section class="col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.currentName.$invalid && !myForm.currentName.$pristine, 'has-success': myForm.currentName.$valid && !myForm.currentName.$pristine}">
+                            <label for="currentName">First Name <span class="text-danger">*</span></label>
+                            <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
+                            <input type="text" name="currentFirstName" readonly ng-model="contactHelpRequest.FirstName" class="form-control" required />
+                        </div>
+                    </section>
+                    <section class="col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.currentLastName.$invalid && !myForm.currentLastName.$pristine, 'has-success': myForm.currentLastName.$valid && !myForm.currentLastName.$pristine}">
+                            <label for="currentName">Last Name <span class="text-danger">*</span></label>
+                            <span class="label label-danger" ng-show="submitted && myForm.currentName.$error.required">Required!</span>
+                            <input type="text" name="currentLastName" readonly ng-model="contactHelpRequest.LastName" class="form-control" required />
+                        </div>
+                    </section>
+                                 
+                </div>
+                <div class="row">
+                    <section class="col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.phoneNumber.$invalid && !myForm.phoneNumber.$pristine, 'has-success': myForm.phoneNumber.$valid && !myForm.currentEmail.$pristine}">
+                            <label for="phoneNumber">Phone number or extension <span class="text-danger">*</span> </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.phoneNumber.$error.required">Required!</span>
+                            <input type="tel" name="phoneNumber" readonly ng-model="contactHelpRequest.PrimaryPhoneNumber" class="form-control" required />
+                        </div>
+                    </section>
+                    <section class="col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.programManager.$invalid && !myForm.programManager.$pristine, 'has-success': myForm.programManager.$valid && !myForm.programManager.$pristine}">
+                            <label for="programManager">Program Manager <span class="text-danger">*</span> </label>
+                            <span class="label label-danger" ng-show="submitted && myForm.programManager.$error.required">Required!</span>
+                            <input type="text" name="programManager" readonly ng-model="contactHelpRequest.ManagerName" class="form-control" required />
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.receiptEmail.$invalid && !myForm.receiptEmail.$pristine, 'has-success': myForm.receiptEmail.$valid && !myForm.receiptEmail.$pristine}">
+                            <label for="receiptEmail">Your email if you would like a receipt </label>
+                            <input type="text" name="receiptEmail"  ng-model="contactHelpRequest.receiptEmail" class="form-control" />
+                        </div>
+                    </section>
+                    <section class="col-md-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : myForm.Location.$invalid && !myForm.Location.$pristine, 'has-success': myForm.Location.$valid && !myForm.Location.$pristine}">
+                            <label for="Location">Location of problem /assistance </label>
+                            <input type="text" name="Location" ng-model="contactHelpRequest.Location" class="form-control"  />
+                        </div>
+                    </section>        
+                </div>
+                <div class="row">
+                    <section class="col-md-12">
+                        <div class="form-group" >
+                            <label for="problemDescription" class="control-label">
+                                Brief description of problem/assistance
+                            </label>
+                            <textarea rows="4" name="problemDescription" class="form-control" ng-model="contactHelpRequest.problemDescription" ></textarea>
+                            
+                        </div>
+                    </section>
+                </div>
+            </fieldset>           
+
+            </fieldset>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-danger" ng-click="goBack();"><i class="fa fa-hand-o-left fa-lg">&nbsp;</i>Back</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Submit</button>
+                </div>
+        </form>
+    </div>
+</div>
