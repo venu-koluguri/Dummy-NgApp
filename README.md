@@ -1,7 +1,7 @@
-Dummy-NgApp
+admin-NgApp
 ===========
 
-My First dummy angular project, using :
+admin angular project, using :
  * Ui-router
  * ui.bootstrap
  * ui.select2
